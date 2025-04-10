@@ -65,7 +65,7 @@ const DashboardSidebar: React.FC = () => {
         <SidebarMenu>
           {menuItems.map((item) => (
             <SidebarMenuItem key={item.path}>
-              <SidebarMenuButton asChild active={location.pathname === item.path}>
+              <SidebarMenuButton asChild isActive={location.pathname === item.path}>
                 <Link to={item.path} className="flex items-center space-x-2">
                   <item.icon className="h-5 w-5" />
                   <span>{item.title}</span>

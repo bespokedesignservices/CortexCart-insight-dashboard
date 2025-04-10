@@ -10,11 +10,11 @@ import {
   ShoppingCart,
   ArrowUpRight,
   Settings,
-  LineChart
+  LineChart as LineChartIcon
 } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
-  LineChart as ReChart, 
+  LineChart, 
   Line, 
   XAxis, 
   YAxis, 
@@ -148,7 +148,7 @@ const Dashboard: React.FC = () => {
         <Card>
           <CardHeader>
             <CardTitle className="text-lg font-semibold flex items-center">
-              <LineChart className="mr-2 h-5 w-5 text-recoai-purple" />
+              <LineChartIcon className="mr-2 h-5 w-5 text-recoai-purple" />
               AI Insights
             </CardTitle>
           </CardHeader>
