@@ -35,7 +35,7 @@ const PricingSection: React.FC = () => {
         { text: "AI-powered recommendations", included: false },
         { text: "Advanced customer segmentation", included: false },
         { text: "Custom reports", included: false },
-        { text: "Powered by RecoAI", included: false }
+        { text: "Includes powered by RecoAI Logo", included: true }
       ],
       buttonText: "Start Free Trial",
       buttonVariant: "outline"
@@ -52,7 +52,7 @@ const PricingSection: React.FC = () => {
         { text: "AI-powered recommendations", included: true },
         { text: "Advanced customer segmentation", included: true },
         { text: "Custom reports", included: false },
-        { text: "Powered by RecoAI", included: true }
+        { text: "Powered by RecoAI Logo Removal", included: true }
       ],
       popular: true,
       buttonText: "Start Free Trial",
@@ -70,7 +70,7 @@ const PricingSection: React.FC = () => {
         { text: "AI-powered recommendations", included: true },
         { text: "Advanced customer segmentation", included: true },
         { text: "Custom reports", included: true },
-        { text: "Powered by RecoAI", included: true }
+        { text: "Powered by RecoAI Logo Removal", included: true }
       ],
       buttonText: "Start Free Trial",
       buttonVariant: "outline"
