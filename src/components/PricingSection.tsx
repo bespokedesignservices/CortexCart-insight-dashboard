@@ -34,7 +34,8 @@ const PricingSection: React.FC = () => {
         { text: "Email support", included: true },
         { text: "AI-powered recommendations", included: false },
         { text: "Advanced customer segmentation", included: false },
-        { text: "Custom reports", included: false }
+        { text: "Custom reports", included: false },
+        { text: "Powered by reclaimed logo removal", included: false }
       ],
       buttonText: "Start Free Trial",
       buttonVariant: "outline"
@@ -50,7 +51,8 @@ const PricingSection: React.FC = () => {
         { text: "Priority email support", included: true },
         { text: "AI-powered recommendations", included: true },
         { text: "Advanced customer segmentation", included: true },
-        { text: "Custom reports", included: false }
+        { text: "Custom reports", included: false },
+        { text: "Powered by reclaimed logo removal", included: true }
       ],
       popular: true,
       buttonText: "Start Free Trial",
@@ -67,7 +69,8 @@ const PricingSection: React.FC = () => {
         { text: "24/7 priority support", included: true },
         { text: "AI-powered recommendations", included: true },
         { text: "Advanced customer segmentation", included: true },
-        { text: "Custom reports", included: true }
+        { text: "Custom reports", included: true },
+        { text: "Powered by reclaimed logo removal", included: true }
       ],
       buttonText: "Start Free Trial",
       buttonVariant: "outline"
