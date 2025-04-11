@@ -7,6 +7,14 @@ import { Menu, X } from "lucide-react";
 const LandingNavbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const scrollToSection = (sectionId: string) => {
+    setIsMenuOpen(false);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <nav className="w-full py-4 bg-white/90 backdrop-blur-sm fixed top-0 z-50 border-b">
       <div className="container mx-auto px-4 md:px-6">
@@ -17,15 +25,24 @@ const LandingNavbar: React.FC = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/#features" className="text-recoai-darkGray hover:text-recoai-purple transition-colors">
+            <button 
+              onClick={() => scrollToSection("features")}
+              className="text-recoai-darkGray hover:text-recoai-purple transition-colors"
+            >
               Features
-            </Link>
-            <Link to="/#how-it-works" className="text-recoai-darkGray hover:text-recoai-purple transition-colors">
+            </button>
+            <button 
+              onClick={() => scrollToSection("how-it-works")}
+              className="text-recoai-darkGray hover:text-recoai-purple transition-colors"
+            >
               How It Works
-            </Link>
-            <Link to="/#pricing" className="text-recoai-darkGray hover:text-recoai-purple transition-colors">
+            </button>
+            <button 
+              onClick={() => scrollToSection("pricing")}
+              className="text-recoai-darkGray hover:text-recoai-purple transition-colors"
+            >
               Pricing
-            </Link>
+            </button>
             <Link to="/login" className="text-recoai-darkGray hover:text-recoai-purple transition-colors">
               Log In
             </Link>
@@ -46,27 +63,24 @@ const LandingNavbar: React.FC = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden flex flex-col space-y-4 mt-4 py-4 animate-fade-in">
-            <Link 
-              to="/#features" 
+            <button 
+              onClick={() => scrollToSection("features")}
               className="text-recoai-darkGray hover:text-recoai-purple transition-colors"
-              onClick={() => setIsMenuOpen(false)}
             >
               Features
-            </Link>
-            <Link 
-              to="/#how-it-works" 
+            </button>
+            <button 
+              onClick={() => scrollToSection("how-it-works")}
               className="text-recoai-darkGray hover:text-recoai-purple transition-colors"
-              onClick={() => setIsMenuOpen(false)}
             >
               How It Works
-            </Link>
-            <Link 
-              to="/#pricing" 
+            </button>
+            <button 
+              onClick={() => scrollToSection("pricing")}
               className="text-recoai-darkGray hover:text-recoai-purple transition-colors"
-              onClick={() => setIsMenuOpen(false)}
             >
               Pricing
-            </Link>
+            </button>
             <Link 
               to="/login" 
               className="text-recoai-darkGray hover:text-recoai-purple transition-colors"
