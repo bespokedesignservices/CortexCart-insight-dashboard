@@ -21,7 +21,11 @@ import {
   LogOut,
 } from "lucide-react";
 
-const AdminSidebar: React.FC = () => {
+interface AdminSidebarProps {
+  onLogout?: () => void;
+}
+
+const AdminSidebar: React.FC<AdminSidebarProps> = ({ onLogout }) => {
   const location = useLocation();
   
   const menuItems = [
@@ -87,11 +91,15 @@ const AdminSidebar: React.FC = () => {
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild className="text-recoai-gray hover:text-recoai-darkGray">
-              <Link to="/logout" className="flex items-center space-x-2">
+            <SidebarMenuButton 
+              asChild 
+              className="text-recoai-gray hover:text-recoai-darkGray"
+              onClick={onLogout}
+            >
+              <button className="flex items-center space-x-2 w-full text-left">
                 <LogOut className="h-5 w-5" />
                 <span>Logout</span>
-              </Link>
+              </button>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
