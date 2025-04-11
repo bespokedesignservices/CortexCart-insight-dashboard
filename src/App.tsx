@@ -9,6 +9,8 @@ import Dashboard from "./pages/Dashboard";
 import DashboardLayout from "./components/dashboard/DashboardLayout";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
+import AdminLayout from "./components/admin/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +28,12 @@ const App = () => (
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<Dashboard />} />
             {/* Add other dashboard routes as needed */}
+          </Route>
+          
+          {/* Admin Routes */}
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboard />} />
+            {/* More admin routes will be added later */}
           </Route>
           
           {/* Catch-all route */}
