@@ -6,6 +6,7 @@ import FeaturesSection from "@/components/FeaturesSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import PricingSection from "@/components/PricingSection";
+import FaqSection from "@/components/FaqSection";
 import CtaSection from "@/components/CtaSection";
 import LandingFooter from "@/components/LandingFooter";
 
@@ -19,6 +20,7 @@ const Landing: React.FC = () => {
         <HowItWorksSection />
         <TestimonialsSection />
         <PricingSection />
+        <FaqSection />
         <CtaSection />
       </main>
       <LandingFooter />
