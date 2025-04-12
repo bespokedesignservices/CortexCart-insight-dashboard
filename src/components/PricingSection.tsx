@@ -158,7 +158,7 @@ const PricingSection: React.FC = () => {
                         : "border-recoai-purple text-recoai-purple hover:bg-recoai-purple/10"
                     }`}
                   >
-                    <Link to="/dashboard">{tier.buttonText}</Link>
+                    <Link to={`/register?plan=${tier.title.toLowerCase()}`}>{tier.buttonText}</Link>
                   </Button>
                 </div>
               </div>

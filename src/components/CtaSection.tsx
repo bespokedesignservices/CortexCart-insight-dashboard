@@ -16,7 +16,7 @@ const CtaSection: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button asChild size="lg" className="bg-recoai-purple hover:bg-recoai-purple/90 text-white px-8">
-              <Link to="/dashboard">Start Your Free Trial</Link>
+              <Link to="/register">Start Your Free Trial</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="border-recoai-purple text-recoai-purple hover:bg-recoai-purple/10">
               <Link to="/contact">Talk to Sales</Link>

@@ -17,7 +17,7 @@ const HeroSection: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild size="lg" className="bg-recoai-purple hover:bg-recoai-purple/90 text-white px-8">
-                <Link to="/dashboard">Get Started Free</Link>
+                <Link to="/register">Get Started Free</Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-recoai-purple text-recoai-purple hover:bg-recoai-purple/10">
                 <Link to="/#how-it-works">See How It Works</Link>

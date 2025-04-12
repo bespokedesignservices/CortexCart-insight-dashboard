@@ -47,7 +47,7 @@ const LandingNavbar: React.FC = () => {
               Log In
             </Link>
             <Button asChild className="bg-recoai-purple hover:bg-recoai-purple/90">
-              <Link to="/dashboard">Get Started</Link>
+              <Link to="/register">Get Started</Link>
             </Button>
           </div>
           
@@ -89,7 +89,7 @@ const LandingNavbar: React.FC = () => {
               Log In
             </Link>
             <Button asChild className="bg-recoai-purple hover:bg-recoai-purple/90 w-full">
-              <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>Get Started</Link>
+              <Link to="/register" onClick={() => setIsMenuOpen(false)}>Get Started</Link>
             </Button>
           </div>
         )}
