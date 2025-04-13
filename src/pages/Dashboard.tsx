@@ -37,12 +37,15 @@ const data = [
 ];
 
 const Dashboard: React.FC = () => {
+  // Placeholder for user name - this would typically come from an auth context
+  const userName = "John"; 
+
   return (
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
         <p className="text-recoai-gray">
-          Welcome back! Here's an overview of your store's performance.
+          Welcome back, {userName}! Here's an overview of your store's performance.
         </p>
       </div>
 
