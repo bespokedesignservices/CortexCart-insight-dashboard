@@ -1,9 +1,10 @@
 
-import React from "react";
+import React, { useState } from "react";
 import {
   Bell,
   Search,
   User,
+  TrendingUp,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import {
@@ -18,8 +19,30 @@ import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Link } from "react-router-dom";
+import {
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
 
 const DashboardHeader: React.FC = () => {
+  const [open, setOpen] = useState(false);
+
+  React.useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setOpen((open) => !open);
+      }
+    };
+
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
+
   return (
     <header className="w-full border-b border-gray-200 bg-white p-4">
       <div className="flex items-center justify-between">
@@ -30,11 +53,25 @@ const DashboardHeader: React.FC = () => {
             <Input
               placeholder="Search..."
               className="pl-8 bg-gray-50 border-gray-200 w-[280px]"
+              onClick={() => setOpen(true)}
+              readOnly
             />
           </div>
         </div>
 
         <div className="flex items-center space-x-4">
+          <Button
+            variant="outline"
+            size="sm"
+            className="hidden sm:flex items-center gap-2 border-gray-200 text-recoai-purple hover:text-recoai-purple hover:bg-recoai-purple/5"
+            asChild
+          >
+            <Link to="/dashboard/investors">
+              <TrendingUp className="h-4 w-4" />
+              <span>Investors</span>
+            </Link>
+          </Button>
+
           <Button
             variant="outline"
             size="icon"
@@ -79,6 +116,57 @@ const DashboardHeader: React.FC = () => {
           </DropdownMenu>
         </div>
       </div>
+      
+      <CommandDialog open={open} onOpenChange={setOpen}>
+        <CommandInput placeholder="Search across your dashboard..." />
+        <CommandList>
+          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandGroup heading="Pages">
+            <CommandItem onSelect={() => {
+              setOpen(false);
+              window.location.href = "/dashboard";
+            }}>
+              <Search className="mr-2 h-4 w-4" />
+              <span>Dashboard</span>
+            </CommandItem>
+            <CommandItem onSelect={() => {
+              setOpen(false);
+              window.location.href = "/dashboard/analytics";
+            }}>
+              <Search className="mr-2 h-4 w-4" />
+              <span>Analytics</span>
+            </CommandItem>
+            <CommandItem onSelect={() => {
+              setOpen(false);
+              window.location.href = "/dashboard/products";
+            }}>
+              <Search className="mr-2 h-4 w-4" />
+              <span>Products</span>
+            </CommandItem>
+            <CommandItem onSelect={() => {
+              setOpen(false);
+              window.location.href = "/dashboard/customers";
+            }}>
+              <Search className="mr-2 h-4 w-4" />
+              <span>Customers</span>
+            </CommandItem>
+            <CommandItem onSelect={() => {
+              setOpen(false);
+              window.location.href = "/dashboard/settings";
+            }}>
+              <Search className="mr-2 h-4 w-4" />
+              <span>Settings</span>
+            </CommandItem>
+            <CommandItem onSelect={() => {
+              setOpen(false);
+              window.location.href = "/dashboard/investors";
+            }}>
+              <TrendingUp className="mr-2 h-4 w-4" />
+              <span>Investors</span>
+            </CommandItem>
+          </CommandGroup>
+        </CommandList>
+      </CommandDialog>
     </header>
   );
 };

@@ -28,6 +28,7 @@ import Analytics from "./pages/dashboard/Analytics";
 import Products from "./pages/dashboard/Products";
 import Customers from "./pages/dashboard/Customers";
 import Settings from "./pages/dashboard/Settings";
+import Investors from "./pages/dashboard/Investors";
 import Help from "./pages/Help";
 
 const queryClient = new QueryClient();
@@ -59,6 +60,7 @@ const App = () => (
             <Route path="products" element={<Products />} />
             <Route path="customers" element={<Customers />} />
             <Route path="settings" element={<Settings />} />
+            <Route path="investors" element={<Investors />} />
           </Route>
           
           {/* Admin Routes */}
