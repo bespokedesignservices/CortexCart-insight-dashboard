@@ -24,6 +24,11 @@ import About from "./pages/About";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
+import Analytics from "./pages/dashboard/Analytics";
+import Products from "./pages/dashboard/Products";
+import Customers from "./pages/dashboard/Customers";
+import Settings from "./pages/dashboard/Settings";
+import Help from "./pages/Help";
 
 const queryClient = new QueryClient();
 
@@ -45,11 +50,15 @@ const App = () => (
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/help" element={<Help />} />
           
           {/* Dashboard Routes */}
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<Dashboard />} />
-            {/* Add other dashboard routes as needed */}
+            <Route path="analytics" element={<Analytics />} />
+            <Route path="products" element={<Products />} />
+            <Route path="customers" element={<Customers />} />
+            <Route path="settings" element={<Settings />} />
           </Route>
           
           {/* Admin Routes */}

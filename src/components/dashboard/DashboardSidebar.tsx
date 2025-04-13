@@ -88,7 +88,7 @@ const DashboardSidebar: React.FC = () => {
           </SidebarMenuItem>
           <SidebarMenuItem>
             <SidebarMenuButton asChild className="text-recoai-gray hover:text-recoai-darkGray">
-              <Link to="/logout" className="flex items-center space-x-2">
+              <Link to="/login" className="flex items-center space-x-2">
                 <LogOut className="h-5 w-5" />
                 <span>Logout</span>
               </Link>
