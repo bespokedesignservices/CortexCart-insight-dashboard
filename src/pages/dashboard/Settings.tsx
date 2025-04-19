@@ -10,7 +10,11 @@ import {
   Mail,
   MessageSquare,
   Shield,
-  Key
+  Key,
+  CreditCard,
+  FileText,
+  Package,
+  PackageOpen
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -106,10 +110,35 @@ const Settings: React.FC = () => {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg font-semibold">Billing & Plans</CardTitle>
+            <CardTitle className="text-lg font-semibold">Billing &amp; Plans</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-recoai-gray">Subscription and billing information will be displayed here.</p>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/dashboard/billing/subscription" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                  <Package className="h-5 w-5 text-recoai-purple" />
+                  <span>Manage Subscription</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/billing/payment-methods" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                  <CreditCard className="h-5 w-5 text-recoai-purple" />
+                  <span>Payment Methods</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/billing/invoices" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                  <FileText className="h-5 w-5 text-recoai-purple" />
+                  <span>Billing History</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/billing/receipts" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                  <PackageOpen className="h-5 w-5 text-recoai-purple" />
+                  <span>Receipts &amp; Downloads</span>
+                </Link>
+              </li>
+            </ul>
           </CardContent>
         </Card>
       </div>
