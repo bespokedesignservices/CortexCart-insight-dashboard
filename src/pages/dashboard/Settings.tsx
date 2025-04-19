@@ -8,7 +8,9 @@ import {
   UserCheck,
   Bell,
   Mail,
-  MessageSquare
+  MessageSquare,
+  Shield,
+  Key
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -37,12 +39,6 @@ const Settings: React.FC = () => {
                 <Link to="/dashboard/account/password" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
                   <Lock className="h-5 w-5 text-recoai-purple" />
                   <span>Change Password</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/dashboard/account/2fa" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
-                  <ShieldCheck className="h-5 w-5 text-recoai-purple" />
-                  <span>Setup Two Factor Login</span>
                 </Link>
               </li>
               <li>
@@ -86,7 +82,26 @@ const Settings: React.FC = () => {
             <CardTitle className="text-lg font-semibold">Security</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-recoai-gray">Security settings will be available here.</p>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/dashboard/security/2fa" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                  <ShieldCheck className="h-5 w-5 text-recoai-purple" />
+                  <span>Setup Two Factor Login</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/security/password" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                  <Key className="h-5 w-5 text-recoai-purple" />
+                  <span>Change Security Questions</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/security/sessions" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                  <Shield className="h-5 w-5 text-recoai-purple" />
+                  <span>Manage Active Sessions</span>
+                </Link>
+              </li>
+            </ul>
           </CardContent>
         </Card>
         <Card>
