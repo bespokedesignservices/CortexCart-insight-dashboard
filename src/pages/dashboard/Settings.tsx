@@ -5,7 +5,10 @@ import {
   User, 
   Lock, 
   ShieldCheck, 
-  UserCheck 
+  UserCheck,
+  Bell,
+  Mail,
+  MessageSquare
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -56,7 +59,26 @@ const Settings: React.FC = () => {
             <CardTitle className="text-lg font-semibold">Notification Preferences</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-recoai-gray">Notification settings will be displayed here.</p>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/dashboard/notifications/push" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                  <Bell className="h-5 w-5 text-recoai-purple" />
+                  <span>Push Notifications</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/notifications/email" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                  <Mail className="h-5 w-5 text-recoai-purple" />
+                  <span>Email Notifications</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/notifications/text" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                  <MessageSquare className="h-5 w-5 text-recoai-purple" />
+                  <span>Text Notifications</span>
+                </Link>
+              </li>
+            </ul>
           </CardContent>
         </Card>
         <Card>
