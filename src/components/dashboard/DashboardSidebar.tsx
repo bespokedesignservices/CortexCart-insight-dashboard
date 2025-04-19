@@ -19,11 +19,12 @@ import {
   Settings,
   HelpCircle,
   LogOut,
+  Linkedin,
 } from "lucide-react";
 
 const DashboardSidebar: React.FC = () => {
   const location = useLocation();
-  
+
   const menuItems = [
     {
       title: "Dashboard",
@@ -50,6 +51,11 @@ const DashboardSidebar: React.FC = () => {
       icon: Settings,
       path: "/dashboard/settings",
     },
+    {
+      title: "Social Media Manager",
+      icon: Linkedin,
+      path: "/dashboard/social-media-manager",
+    },
   ];
 
   return (
@@ -60,7 +66,7 @@ const DashboardSidebar: React.FC = () => {
         </Link>
         <SidebarTrigger className="absolute right-2 top-4 md:hidden" />
       </SidebarHeader>
-      
+
       <SidebarContent>
         <SidebarMenu>
           {menuItems.map((item) => (
@@ -75,7 +81,7 @@ const DashboardSidebar: React.FC = () => {
           ))}
         </SidebarMenu>
       </SidebarContent>
-      
+
       <SidebarFooter className="p-4">
         <SidebarMenu>
           <SidebarMenuItem>
@@ -101,3 +107,4 @@ const DashboardSidebar: React.FC = () => {
 };
 
 export default DashboardSidebar;
+
