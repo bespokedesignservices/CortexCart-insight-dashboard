@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 
+// Properly create interestsOptions as a readonly tuple for z.enum
 const interestsOptions = [
   "Marketing",
   "Sales",
@@ -17,7 +18,7 @@ const interestsOptions = [
   "Order Management",
   "Product Development",
   "Tech Support",
-];
+] as const;
 
 const profileSchema = z.object({
   fullName: z.string().min(3, "Full name must be at least 3 characters"),

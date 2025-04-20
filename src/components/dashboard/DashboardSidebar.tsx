@@ -1,5 +1,3 @@
-
-// We update the badge to use Tailwind yellow/orange shades and add some more horizontal padding for spacing.
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -24,10 +22,19 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
+type BadgeVariant = "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
+
 const DashboardSidebar: React.FC = () => {
   const location = useLocation();
 
-  const menuItems = [
+  const menuItems: {
+    title: string;
+    icon: React.ElementType;
+    path: string;
+    badgeName?: string;
+    badgeVariant?: BadgeVariant;
+    badgeClassName?: string;
+  }[] = [
     {
       title: "Dashboard",
       icon: Home,
