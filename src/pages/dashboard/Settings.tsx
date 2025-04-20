@@ -1,10 +1,12 @@
 
+// We update the Settings page to link paths to the new pages under /dashboard/account and /dashboard/notifications as requested:
+
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { 
-  User, 
-  Lock, 
-  ShieldCheck, 
+import {
+  User,
+  Lock,
+  ShieldCheck,
   UserCheck,
   Bell,
   Mail,
@@ -14,7 +16,7 @@ import {
   CreditCard,
   FileText,
   Package,
-  PackageOpen
+  PackageOpen,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -34,19 +36,28 @@ const Settings: React.FC = () => {
           <CardContent>
             <ul className="space-y-3">
               <li>
-                <Link to="/dashboard/account/username" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                <Link
+                  to="/dashboard/account/username"
+                  className="flex items-center space-x-3 hover:text-recoai-purple no-underline"
+                >
                   <User className="h-5 w-5 text-recoai-purple" />
                   <span>Change Username</span>
                 </Link>
               </li>
               <li>
-                <Link to="/dashboard/account/password" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                <Link
+                  to="/dashboard/account/password"
+                  className="flex items-center space-x-3 hover:text-recoai-purple no-underline"
+                >
                   <Lock className="h-5 w-5 text-recoai-purple" />
                   <span>Change Password</span>
                 </Link>
               </li>
               <li>
-                <Link to="/dashboard/account/profile" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                <Link
+                  to="/dashboard/account/profile"
+                  className="flex items-center space-x-3 hover:text-recoai-purple no-underline"
+                >
                   <UserCheck className="h-5 w-5 text-recoai-purple" />
                   <span>Complete Profile</span>
                 </Link>
@@ -61,19 +72,28 @@ const Settings: React.FC = () => {
           <CardContent>
             <ul className="space-y-3">
               <li>
-                <Link to="/dashboard/notifications/push" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                <Link
+                  to="/dashboard/notifications/push"
+                  className="flex items-center space-x-3 hover:text-recoai-purple no-underline"
+                >
                   <Bell className="h-5 w-5 text-recoai-purple" />
                   <span>Push Notifications</span>
                 </Link>
               </li>
               <li>
-                <Link to="/dashboard/notifications/email" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                <Link
+                  to="/dashboard/notifications/email"
+                  className="flex items-center space-x-3 hover:text-recoai-purple no-underline"
+                >
                   <Mail className="h-5 w-5 text-recoai-purple" />
                   <span>Email Notifications</span>
                 </Link>
               </li>
               <li>
-                <Link to="/dashboard/notifications/text" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                <Link
+                  to="/dashboard/notifications/text"
+                  className="flex items-center space-x-3 hover:text-recoai-purple no-underline"
+                >
                   <MessageSquare className="h-5 w-5 text-recoai-purple" />
                   <span>Text Notifications</span>
                 </Link>
@@ -88,19 +108,28 @@ const Settings: React.FC = () => {
           <CardContent>
             <ul className="space-y-3">
               <li>
-                <Link to="/dashboard/security/2fa" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                <Link
+                  to="/dashboard/security/2fa"
+                  className="flex items-center space-x-3 hover:text-recoai-purple no-underline"
+                >
                   <ShieldCheck className="h-5 w-5 text-recoai-purple" />
                   <span>Setup Two Factor Login</span>
                 </Link>
               </li>
               <li>
-                <Link to="/dashboard/security/password" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                <Link
+                  to="/dashboard/security/password"
+                  className="flex items-center space-x-3 hover:text-recoai-purple no-underline"
+                >
                   <Key className="h-5 w-5 text-recoai-purple" />
                   <span>Change Security Questions</span>
                 </Link>
               </li>
               <li>
-                <Link to="/dashboard/security/sessions" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                <Link
+                  to="/dashboard/security/sessions"
+                  className="flex items-center space-x-3 hover:text-recoai-purple no-underline"
+                >
                   <Shield className="h-5 w-5 text-recoai-purple" />
                   <span>Manage Active Sessions</span>
                 </Link>
@@ -115,25 +144,37 @@ const Settings: React.FC = () => {
           <CardContent>
             <ul className="space-y-3">
               <li>
-                <Link to="/dashboard/billing/subscription" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                <Link
+                  to="/dashboard/billing/subscription"
+                  className="flex items-center space-x-3 hover:text-recoai-purple no-underline"
+                >
                   <Package className="h-5 w-5 text-recoai-purple" />
                   <span>Manage Subscription</span>
                 </Link>
               </li>
               <li>
-                <Link to="/dashboard/billing/payment-methods" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                <Link
+                  to="/dashboard/billing/payment-methods"
+                  className="flex items-center space-x-3 hover:text-recoai-purple no-underline"
+                >
                   <CreditCard className="h-5 w-5 text-recoai-purple" />
                   <span>Payment Methods</span>
                 </Link>
               </li>
               <li>
-                <Link to="/dashboard/billing/invoices" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                <Link
+                  to="/dashboard/billing/invoices"
+                  className="flex items-center space-x-3 hover:text-recoai-purple no-underline"
+                >
                   <FileText className="h-5 w-5 text-recoai-purple" />
                   <span>Billing History</span>
                 </Link>
               </li>
               <li>
-                <Link to="/dashboard/billing/receipts" className="flex items-center space-x-3 hover:text-recoai-purple no-underline">
+                <Link
+                  to="/dashboard/billing/receipts"
+                  className="flex items-center space-x-3 hover:text-recoai-purple no-underline"
+                >
                   <PackageOpen className="h-5 w-5 text-recoai-purple" />
                   <span>Receipts &amp; Downloads</span>
                 </Link>

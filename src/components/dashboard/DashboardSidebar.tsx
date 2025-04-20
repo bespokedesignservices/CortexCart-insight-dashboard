@@ -1,4 +1,5 @@
 
+// We update the badge to use Tailwind yellow/orange shades and add some more horizontal padding for spacing.
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -52,12 +53,16 @@ const DashboardSidebar: React.FC = () => {
       icon: ShoppingCart,
       path: "/dashboard/sales-platforms",
       badgeName: "Growth Plan",
+      badgeVariant: "outline",
+      badgeClassName: "text-yellow-600 bg-yellow-100 border-yellow-600 px-3",
     },
     {
       title: "Social Media Manager",
       icon: Linkedin,
       path: "/dashboard/social-media-manager",
       badgeName: "Elite Plan",
+      badgeVariant: "outline",
+      badgeClassName: "text-orange-600 bg-orange-100 border-orange-600 px-3",
     },
     {
       title: "Settings",
@@ -84,7 +89,10 @@ const DashboardSidebar: React.FC = () => {
                   <item.icon className="h-5 w-5" />
                   <span>{item.title}</span>
                   {item.badgeName && (
-                    <Badge variant="secondary" className="ml-auto truncate max-w-[5rem]">
+                    <Badge
+                      variant={item.badgeVariant || "secondary"}
+                      className={`ml-auto truncate max-w-[6rem] ${item.badgeClassName || ""}`}
+                    >
                       {item.badgeName}
                     </Badge>
                   )}
@@ -120,4 +128,3 @@ const DashboardSidebar: React.FC = () => {
 };
 
 export default DashboardSidebar;
-

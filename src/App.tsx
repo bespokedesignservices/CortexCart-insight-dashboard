@@ -1,4 +1,6 @@
 
+// We add routes for the new pages under /dashboard/account and /dashboard/notifications, also for the new sales platforms and social media manager paths.
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -31,6 +33,19 @@ import Settings from "./pages/dashboard/Settings";
 import Investors from "./pages/dashboard/Investors";
 import Help from "./pages/Help";
 
+import SalesPlatforms from "./pages/dashboard/SalesPlatforms";
+import SocialMediaManager from "./pages/dashboard/SocialMediaManager";
+
+import AccountSettings from "./pages/dashboard/account";
+import Username from "./pages/dashboard/account/Username";
+import Password from "./pages/dashboard/account/Password";
+import Profile from "./pages/dashboard/account/Profile";
+
+import NotificationSettings from "./pages/dashboard/notifications";
+import PushNotifications from "./pages/dashboard/notifications/Push";
+import EmailNotifications from "./pages/dashboard/notifications/Email";
+import TextNotifications from "./pages/dashboard/notifications/Text";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -59,7 +74,24 @@ const App = () => (
             <Route path="analytics" element={<Analytics />} />
             <Route path="products" element={<Products />} />
             <Route path="customers" element={<Customers />} />
+            <Route path="sales-platforms" element={<SalesPlatforms />} />
+            <Route path="social-media-manager" element={<SocialMediaManager />} />
             <Route path="settings" element={<Settings />} />
+            
+            {/* Account settings nested */}
+            <Route path="account" element={<AccountSettings />}>
+              <Route path="username" element={<Username />} />
+              <Route path="password" element={<Password />} />
+              <Route path="profile" element={<Profile />} />
+            </Route>
+
+            {/* Notifications nested */}
+            <Route path="notifications" element={<NotificationSettings />}>
+              <Route path="push" element={<PushNotifications />} />
+              <Route path="email" element={<EmailNotifications />} />
+              <Route path="text" element={<TextNotifications />} />
+            </Route>
+
             <Route path="investors" element={<Investors />} />
           </Route>
           
