@@ -54,15 +54,15 @@ const DashboardSidebar: React.FC = () => {
       badgeName: "Growth Plan",
     },
     {
-      title: "Settings",
-      icon: Settings,
-      path: "/dashboard/settings",
-    },
-    {
       title: "Social Media Manager",
       icon: Linkedin,
       path: "/dashboard/social-media-manager",
       badgeName: "Elite Plan",
+    },
+    {
+      title: "Settings",
+      icon: Settings,
+      path: "/dashboard/settings",
     },
   ];
 
@@ -120,3 +120,4 @@ const DashboardSidebar: React.FC = () => {
 };
 
 export default DashboardSidebar;
+
