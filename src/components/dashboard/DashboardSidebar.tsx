@@ -21,6 +21,7 @@ import {
   LogOut,
   Linkedin,
 } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 const DashboardSidebar: React.FC = () => {
   const location = useLocation();
@@ -47,6 +48,12 @@ const DashboardSidebar: React.FC = () => {
       path: "/dashboard/customers",
     },
     {
+      title: "Sales Platforms",
+      icon: ShoppingCart,
+      path: "/dashboard/sales-platforms",
+      badgeName: "Growth Plan",
+    },
+    {
       title: "Settings",
       icon: Settings,
       path: "/dashboard/settings",
@@ -55,6 +62,7 @@ const DashboardSidebar: React.FC = () => {
       title: "Social Media Manager",
       icon: Linkedin,
       path: "/dashboard/social-media-manager",
+      badgeName: "Elite Plan",
     },
   ];
 
@@ -75,6 +83,11 @@ const DashboardSidebar: React.FC = () => {
                 <Link to={item.path} className="flex items-center space-x-2">
                   <item.icon className="h-5 w-5" />
                   <span>{item.title}</span>
+                  {item.badgeName && (
+                    <Badge variant="secondary" className="ml-auto truncate max-w-[5rem]">
+                      {item.badgeName}
+                    </Badge>
+                  )}
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
@@ -107,4 +120,3 @@ const DashboardSidebar: React.FC = () => {
 };
 
 export default DashboardSidebar;
-
