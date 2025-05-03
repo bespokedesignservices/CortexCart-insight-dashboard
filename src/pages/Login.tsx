@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,29 +7,75 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { useToast } from "@/hooks/use-toast";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { InfoIcon, EyeIcon, EyeOffIcon } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const { toast } = useToast();
   const navigate = useNavigate();
+
+  // Check if user is already logged in
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data } = await supabase.auth.getSession();
+      if (data.session) {
+        navigate("/dashboard");
+      }
+    };
+    
+    checkSession();
+    
+    // Setup auth state listener
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        if (session) {
+          navigate("/dashboard");
+        }
+      }
+    );
+
+    return () => subscription.unsubscribe();
+  }, [navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setErrorMessage(null);
     
-    // Simulate login - in a real app, this would call an API
-    setTimeout(() => {
-      // Fake successful login
-      toast({
-        title: "Login successful",
-        description: "Welcome back to RecoAI Dashboard!",
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password
       });
-      navigate("/dashboard");
+      
+      if (error) {
+        setErrorMessage(error.message);
+        toast({
+          title: "Login failed",
+          description: error.message,
+          variant: "destructive",
+        });
+      } else if (data.user) {
+        toast({
+          title: "Login successful",
+          description: "Welcome back to RecoAI Dashboard!",
+        });
+        navigate("/dashboard");
+      }
+    } catch (error: any) {
+      setErrorMessage(error.message || "An unexpected error occurred");
+      toast({
+        title: "Login error",
+        description: error.message || "An unexpected error occurred",
+        variant: "destructive",
+      });
+    } finally {
       setIsLoading(false);
-    }, 1000);
+    }
   };
 
   const handleTestLogin = () => {
@@ -72,6 +118,12 @@ const Login: React.FC = () => {
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
+              {errorMessage && (
+                <Alert variant="destructive">
+                  <AlertDescription>{errorMessage}</AlertDescription>
+                </Alert>
+              )}
+              
               <div className="space-y-2">
                 <label htmlFor="email" className="text-sm font-medium">
                   Email
@@ -142,7 +194,7 @@ const Login: React.FC = () => {
           <CardFooter className="flex flex-col space-y-4 text-center">
             <div className="text-sm text-muted-foreground">
               Don't have an account?{" "}
-              <Link to="/signup" className="text-recoai-purple hover:text-recoai-purple/80">
+              <Link to="/register" className="text-recoai-purple hover:text-recoai-purple/80">
                 Sign up for a 14-day free trial
               </Link>
             </div>
