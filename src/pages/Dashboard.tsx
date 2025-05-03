@@ -1,9 +1,10 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import StatsCard from "@/components/dashboard/StatsCard";
 import WidgetCode from "@/components/dashboard/WidgetCode";
 import ProductsTable from "@/components/dashboard/ProductsTable";
 import WidgetSettings from "@/components/dashboard/WidgetSettings";
+import TrackerAPI from "@/components/dashboard/TrackerAPI";
 import { 
   Users,
   Eye,
@@ -25,23 +26,105 @@ import {
   Area
 } from "recharts";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useToast } from "@/hooks/use-toast";
 
-const data = [
-  { name: "Jan", visitors: 1200, sales: 48 },
-  { name: "Feb", visitors: 1900, sales: 62 },
-  { name: "Mar", visitors: 2400, sales: 75 },
-  { name: "Apr", visitors: 2800, sales: 96 },
-  { name: "May", visitors: 2600, sales: 92 },
-  { name: "Jun", visitors: 3100, sales: 112 },
-  { name: "Jul", visitors: 3600, sales: 126 },
-];
+interface TrackingEvent {
+  storeId: string;
+  event: string;
+  data: any;
+  timestamp: Date;
+}
 
 const Dashboard: React.FC = () => {
+  // State for tracked data
+  const [visitorsCount, setVisitorsCount] = useState(24589);
+  const [conversionRate, setConversionRate] = useState(3.2);
+  const [salesCount, setSalesCount] = useState(12843);
+  const [activeCustomers, setActiveCustomers] = useState(1432);
+  const [recentEvents, setRecentEvents] = useState<TrackingEvent[]>([]);
+  const { toast } = useToast();
+  
+  // Base chart data
+  const [chartData, setChartData] = useState([
+    { name: "Jan", visitors: 1200, sales: 48 },
+    { name: "Feb", visitors: 1900, sales: 62 },
+    { name: "Mar", visitors: 2400, sales: 75 },
+    { name: "Apr", visitors: 2800, sales: 96 },
+    { name: "May", visitors: 2600, sales: 92 },
+    { name: "Jun", visitors: 3100, sales: 112 },
+    { name: "Jul", visitors: 3600, sales: 126 },
+  ]);
+
+  // Update the visitors in real-time
+  useEffect(() => {
+    // Listen for tracking events
+    const handleTrackingEvent = (e: any) => {
+      const eventData = e.detail as TrackingEvent;
+      console.log('Dashboard received event:', eventData);
+      
+      // Add to recent events
+      setRecentEvents(prev => [eventData, ...prev].slice(0, 20));
+      
+      // Update stats based on event type
+      switch(eventData.event) {
+        case 'page_view':
+          setVisitorsCount(prev => prev + 1);
+          
+          // Update chart data
+          setChartData(prev => {
+            const lastMonth = prev[prev.length - 1];
+            return [
+              ...prev.slice(0, -1),
+              { ...lastMonth, visitors: lastMonth.visitors + 1 }
+            ];
+          });
+          
+          toast({
+            title: "New Visitor",
+            description: `Page view on ${eventData.data.title || 'unknown page'}`,
+          });
+          break;
+          
+        case 'click':
+          setActiveCustomers(prev => prev + 1);
+          break;
+          
+        case 'add_to_cart':
+          setConversionRate(prev => +(prev + 0.01).toFixed(2));
+          setSalesCount(prev => prev + Math.floor(Math.random() * 50) + 10);
+          
+          // Update chart data for sales
+          setChartData(prev => {
+            const lastMonth = prev[prev.length - 1];
+            return [
+              ...prev.slice(0, -1),
+              { ...lastMonth, sales: lastMonth.sales + 1 }
+            ];
+          });
+          
+          toast({
+            title: "Cart Updated",
+            description: `${eventData.data.product} added to cart`,
+          });
+          break;
+      }
+    };
+    
+    window.addEventListener('recoai-event', handleTrackingEvent);
+    
+    return () => {
+      window.removeEventListener('recoai-event', handleTrackingEvent);
+    };
+  }, [toast]);
+  
   // Placeholder for user name - this would typically come from an auth context
   const userName = "John"; 
 
   return (
     <div className="space-y-6">
+      {/* Include the TrackerAPI component to handle tracking requests */}
+      <TrackerAPI />
+      
       <div>
         <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
         <p className="text-recoai-gray">
@@ -52,25 +135,25 @@ const Dashboard: React.FC = () => {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <StatsCard
           title="Total Visitors"
-          value="24,589"
+          value={visitorsCount.toLocaleString()}
           icon={<Eye />}
           change={12}
         />
         <StatsCard
           title="Conversion Rate"
-          value="3.2%"
+          value={`${conversionRate}%`}
           icon={<ArrowUpRight />}
           change={0.8}
         />
         <StatsCard
           title="Total Sales"
-          value="$12,843"
+          value={`$${salesCount.toLocaleString()}`}
           icon={<ShoppingCart />}
           change={23}
         />
         <StatsCard
           title="Active Customers"
-          value="1,432"
+          value={activeCustomers.toLocaleString()}
           icon={<Users />}
           change={-5}
         />
@@ -93,7 +176,7 @@ const Dashboard: React.FC = () => {
               <TabsContent value="traffic" className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart
-                    data={data}
+                    data={chartData}
                     margin={{
                       top: 10,
                       right: 30,
@@ -117,7 +200,7 @@ const Dashboard: React.FC = () => {
               <TabsContent value="sales" className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart
-                    data={data}
+                    data={chartData}
                     margin={{
                       top: 10,
                       right: 30,
@@ -144,6 +227,39 @@ const Dashboard: React.FC = () => {
 
         <WidgetCode />
       </div>
+
+      {/* Recent Tracking Events Card */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg font-semibold">Recent Tracking Events</CardTitle>
+          <CardDescription>
+            Live updates from your tracking widget
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="h-[200px] overflow-y-auto space-y-2">
+            {recentEvents.length > 0 ? (
+              recentEvents.map((event, index) => (
+                <div key={index} className="border-b pb-2 last:border-0">
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium">{event.event}</span>
+                    <span className="text-xs text-muted-foreground">
+                      {event.timestamp.toLocaleTimeString()}
+                    </span>
+                  </div>
+                  <pre className="text-xs bg-muted p-1 rounded-md mt-1 overflow-x-auto">
+                    {JSON.stringify(event.data, null, 2)}
+                  </pre>
+                </div>
+              ))
+            ) : (
+              <div className="text-center py-8 text-muted-foreground">
+                No events recorded yet. Add the tracking widget to your site to see data.
+              </div>
+            )}
+          </div>
+        </CardContent>
+      </Card>
 
       <ProductsTable />
 
