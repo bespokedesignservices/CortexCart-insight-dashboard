@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   Home,
@@ -24,9 +25,9 @@ import { Separator } from "@/components/ui/separator";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
 import { useSidebar } from "@/components/ui/sidebar";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 interface SidebarItemProps {
   href: string;
@@ -47,15 +48,17 @@ const sidebarItems: SidebarItemProps[] = [
 ];
 
 const DashboardSidebar: React.FC = () => {
-  const { collapsed, setCollapsed } = useSidebar();
+  // Fixed: use the correct properties from sidebar context
+  const { state, toggleSidebar } = useSidebar();
+  const isCollapsed = state === "collapsed";
 
   return (
-    <div className={`flex flex-col h-screen bg-white border-r shadow-sm w-full ${collapsed ? 'w-16' : 'w-60'} transition-all duration-200`}>
+    <div className={`flex flex-col h-screen bg-white border-r shadow-sm w-full ${isCollapsed ? 'w-16' : 'w-60'} transition-all duration-200`}>
       <div className="flex items-center justify-between py-3 px-4">
-        <span className="font-bold text-xl">RecoAI</span>
-        <button onClick={() => setCollapsed(!collapsed)}>
-          {collapsed ? <ChevronsRight /> : <ChevronsLeft />}
-        </button>
+        <span className={`font-bold text-xl ${isCollapsed ? 'hidden' : 'block'}`}>RecoAI</span>
+        <Button variant="ghost" size="icon" onClick={toggleSidebar}>
+          {isCollapsed ? <ChevronsRight /> : <ChevronsLeft />}
+        </Button>
       </div>
 
       <Separator />
@@ -68,6 +71,7 @@ const DashboardSidebar: React.FC = () => {
               href={item.href}
               icon={item.icon}
               label={item.label}
+              collapsed={isCollapsed}
             >
               {item.badge && <Badge variant="secondary">{item.badge}</Badge>}
             </NavItem>
@@ -76,48 +80,60 @@ const DashboardSidebar: React.FC = () => {
 
         <Separator className="my-4" />
 
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="account">
-            <AccordionTrigger>Account</AccordionTrigger>
-            <AccordionContent>
-              <nav className="flex flex-col space-y-2">
-                <NavItem href="/dashboard/account/profile" label="Profile" />
-                <NavItem href="/dashboard/account/username" label="Username" />
-                <NavItem href="/dashboard/account/password" label="Password" />
-              </nav>
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="notifications">
-            <AccordionTrigger>Notifications</AccordionTrigger>
-            <AccordionContent>
-              <nav className="flex flex-col space-y-2">
-                <NavItem href="/dashboard/notifications/push" label="Push" />
-                <NavItem href="/dashboard/notifications/email" label="Email" />
-                <NavItem href="/dashboard/notifications/text" label="Text" />
-              </nav>
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
+        {!isCollapsed && (
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="account">
+              <AccordionTrigger>Account</AccordionTrigger>
+              <AccordionContent>
+                <nav className="flex flex-col space-y-2">
+                  <NavItem href="/dashboard/account/profile" label="Profile" />
+                  <NavItem href="/dashboard/account/username" label="Username" />
+                  <NavItem href="/dashboard/account/password" label="Password" />
+                </nav>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="notifications">
+              <AccordionTrigger>Notifications</AccordionTrigger>
+              <AccordionContent>
+                <nav className="flex flex-col space-y-2">
+                  <NavItem href="/dashboard/notifications/push" label="Push" />
+                  <NavItem href="/dashboard/notifications/email" label="Email" />
+                  <NavItem href="/dashboard/notifications/text" label="Text" />
+                </nav>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        )}
 
         <Separator className="my-4" />
 
         <div className="space-y-2">
-          <NavItem href="/help" icon={HelpCircle} label="Help" />
+          <NavItem href="/help" icon={HelpCircle} label="Help" collapsed={isCollapsed} />
         </div>
 
         <div className="mt-auto">
           <Separator className="mb-4" />
-          <div className="flex items-center justify-between">
-            <Avatar className="h-8 w-8">
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-              <AvatarFallback>SC</AvatarFallback>
-            </Avatar>
-            <div className="flex flex-col items-start">
-              <span className="text-sm font-semibold">shadcn</span>
-              <span className="text-xs text-gray-500">@shadcn</span>
+          {!isCollapsed && (
+            <div className="flex items-center justify-between">
+              <Avatar className="h-8 w-8">
+                <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                <AvatarFallback>SC</AvatarFallback>
+              </Avatar>
+              <div className="flex flex-col items-start">
+                <span className="text-sm font-semibold">shadcn</span>
+                <span className="text-xs text-gray-500">@shadcn</span>
+              </div>
+              <Switch id="airplane-mode" />
             </div>
-            <Switch id="airplane-mode" />
-          </div>
+          )}
+          {isCollapsed && (
+            <div className="flex justify-center">
+              <Avatar className="h-8 w-8">
+                <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                <AvatarFallback>SC</AvatarFallback>
+              </Avatar>
+            </div>
+          )}
         </div>
       </div>
     </div>
