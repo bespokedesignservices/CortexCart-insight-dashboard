@@ -8,8 +8,8 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
-import { Textarea } from "@/components/ui/textarea";
 import { CheckCircle } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface PlanOption {
   id: string;
@@ -79,17 +79,32 @@ const Registration: React.FC = () => {
   const handleSubmit = async (data: any) => {
     setIsSubmitting(true);
     try {
-      // In a real app, this would connect to an authentication service
       console.log("Registration data:", data);
       
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Create user in Supabase auth
+      const { data: authData, error } = await supabase.auth.signUp({
+        email: data.email,
+        password: data.password,
+        options: {
+          data: {
+            company_name: data.companyName,
+            website: data.website,
+            plan: data.plan
+          }
+        }
+      });
       
-      toast.success("Registration successful! Your 14-day free trial has started.");
+      if (error) {
+        throw error;
+      }
+      
+      toast.success("Registration successful! Please check your email to confirm your account.");
+      // Redirect to dashboard after successful registration
+      // If email confirmation is required, you might want to redirect to a different page
       navigate("/dashboard");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Registration error:", error);
-      toast.error("Registration failed. Please try again.");
+      toast.error(`Registration failed: ${error.message}`);
     } finally {
       setIsSubmitting(false);
     }

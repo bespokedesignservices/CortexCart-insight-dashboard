@@ -47,19 +47,27 @@ const Login: React.FC = () => {
     setErrorMessage(null);
     
     try {
+      console.log("Attempting login with:", { email });
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password
       });
       
       if (error) {
-        setErrorMessage(error.message);
+        console.error("Login error:", error);
+        if (error.message === "Invalid login credentials") {
+          setErrorMessage("Invalid email or password. Please check your credentials and try again.");
+        } else {
+          setErrorMessage(error.message);
+        }
+        
         toast({
           title: "Login failed",
           description: error.message,
           variant: "destructive",
         });
       } else if (data.user) {
+        console.log("Login successful:", data.user);
         toast({
           title: "Login successful",
           description: "Welcome back to RecoAI Dashboard!",
@@ -67,6 +75,7 @@ const Login: React.FC = () => {
         navigate("/dashboard");
       }
     } catch (error: any) {
+      console.error("Unexpected login error:", error);
       setErrorMessage(error.message || "An unexpected error occurred");
       toast({
         title: "Login error",
