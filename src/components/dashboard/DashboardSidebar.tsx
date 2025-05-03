@@ -48,12 +48,11 @@ const sidebarItems: SidebarItemProps[] = [
 ];
 
 const DashboardSidebar: React.FC = () => {
-  // Fixed: use the correct properties from sidebar context
   const { state, toggleSidebar } = useSidebar();
   const isCollapsed = state === "collapsed";
 
   return (
-    <div className={`flex flex-col h-screen bg-white border-r shadow-sm w-full ${isCollapsed ? 'w-16' : 'w-60'} transition-all duration-200`}>
+    <div className={`flex flex-col h-screen bg-white border-r shadow-sm ${isCollapsed ? 'w-16' : 'w-56 max-w-[25%]'} transition-all duration-200`}>
       <div className="flex items-center justify-between py-3 px-4">
         <span className={`font-bold text-xl ${isCollapsed ? 'hidden' : 'block'}`}>RecoAI</span>
         <Button variant="ghost" size="icon" onClick={toggleSidebar}>
