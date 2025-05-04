@@ -3,7 +3,6 @@ import React from "react";
 import TrackerAPI from "@/components/dashboard/TrackerAPI";
 import WidgetCode from "@/components/dashboard/WidgetCode";
 import WidgetSettings from "@/components/dashboard/WidgetSettings";
-import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import StatsSummary from "@/components/dashboard/StatsSummary";
 import PerformanceChart from "@/components/dashboard/PerformanceChart";
 import RecentEvents from "@/components/dashboard/RecentEvents";
@@ -26,18 +25,12 @@ const Dashboard: React.FC = () => {
     products,
     hasData
   } = useTrackingData();
-  
-  // Placeholder for user name - this would typically come from an auth context
-  const userName = "John";
 
   return (
     <div className="space-y-6">
       {/* Include the TrackerAPI component to handle tracking requests */}
       <TrackerAPI />
       
-      {/* Dashboard Header */}
-      <DashboardHeader userName={userName} />
-
       {/* Stats Summary */}
       <StatsSummary
         visitorsCount={visitorsCount}
