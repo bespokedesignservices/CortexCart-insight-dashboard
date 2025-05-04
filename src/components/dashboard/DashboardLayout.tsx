@@ -37,8 +37,8 @@ const DashboardLayout: React.FC = () => {
     return null; // Will redirect in useEffect
   }
 
-  // Extract userName from user object or use a default value
-  const userName = user.name || user.email?.split('@')[0] || "User";
+  // Extract userName from user object using properties that exist on the User type
+  const userName = user.email?.split('@')[0] || "User";
 
   return (
     <SidebarProvider>
