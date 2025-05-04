@@ -37,12 +37,15 @@ const DashboardLayout: React.FC = () => {
     return null; // Will redirect in useEffect
   }
 
+  // Extract userName from user object or use a default value
+  const userName = user.name || user.email?.split('@')[0] || "User";
+
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-recoai-lightGray">
         <DashboardSidebar />
         <div className="flex-1 flex flex-col min-h-screen">
-          <DashboardHeader />
+          <DashboardHeader userName={userName} />
           <main className="flex-1 p-4 md:p-6 overflow-auto">
             <Outlet />
           </main>
