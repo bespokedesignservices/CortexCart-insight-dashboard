@@ -122,7 +122,7 @@ const WidgetCode: React.FC = () => {
             Copy this code and paste it between the <code>&lt;head&gt;</code> tags of your website to start tracking customer behavior.
           </p>
           <p className="mt-2">
-            For testing, copy this code to any HTML page and open the browser console to see tracking events.
+            For testing, you can view the <a href="/test-page.html" target="_blank" className="text-recoai-purple hover:underline">test page</a> and open the browser console to see tracking events in action.
           </p>
         </div>
       </CardContent>

@@ -8,9 +8,9 @@ const TrackerAPI: React.FC = () => {
     // Create a custom route handler for tracking endpoints
     const originalFetch = window.fetch;
     window.fetch = function(input: RequestInfo | URL, init?: RequestInit) {
-      const url = typeof input === 'string' ? input : input.url;
+      const inputUrl = typeof input === 'string' ? input : input instanceof Request ? input.url : input.toString();
       
-      if (url.endsWith('/api/track')) {
+      if (inputUrl.endsWith('/api/track')) {
         return handleTrackingRequest(init?.body);
       }
       
