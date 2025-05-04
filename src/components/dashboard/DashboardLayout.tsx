@@ -3,19 +3,36 @@ import React, { useEffect } from "react";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import DashboardSidebar from "./DashboardSidebar";
 import DashboardHeader from "./DashboardHeader";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/components/AuthContext";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const DashboardLayout: React.FC = () => {
   const { user, isLoading } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     if (!isLoading && !user) {
       navigate("/login");
     }
   }, [user, isLoading, navigate]);
+
+  // Generate a page title based on the current route
+  const getPageTitle = () => {
+    const path = location.pathname;
+    
+    if (path === "/dashboard") return "Dashboard";
+    
+    const segments = path.split('/');
+    if (segments.length > 2) {
+      // Capitalize the last segment for the title
+      const lastSegment = segments[segments.length - 1];
+      return lastSegment.charAt(0).toUpperCase() + lastSegment.slice(1);
+    }
+    
+    return "Dashboard";
+  };
 
   if (isLoading) {
     return (
@@ -47,6 +64,9 @@ const DashboardLayout: React.FC = () => {
         <div className="flex-1 flex flex-col min-h-screen">
           <DashboardHeader userName={userName} />
           <main className="flex-1 p-4 md:p-6 overflow-auto">
+            <div className="mb-6">
+              <h1 className="text-2xl font-bold tracking-tight">{getPageTitle()}</h1>
+            </div>
             <Outlet />
           </main>
         </div>

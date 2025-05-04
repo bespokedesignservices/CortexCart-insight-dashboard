@@ -1,6 +1,6 @@
 
 import React from "react";
-import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink } from "@/components/ui/navigation-menu";
+import { NavigationMenu, NavigationMenuList, NavigationMenuItem } from "@/components/ui/navigation-menu";
 import { NavItem } from "@/components/ui/nav-item";
 import { Bell, Settings, User } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -13,7 +13,6 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({ userName }) => {
   return (
     <header className="sticky top-0 z-10 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 py-3 flex items-center justify-between">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
         <p className="text-recoai-gray">
           Welcome back, {userName}! Here's an overview of your store's performance.
         </p>
