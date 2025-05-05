@@ -52,8 +52,8 @@ const Dashboard: React.FC = () => {
       {/* Recent Events */}
       <RecentEvents recentEvents={recentEvents} />
 
-      {/* Products Listing */}
-      <ProductsListing products={products} />
+      {/* Products Listing - remove the products prop */}
+      <ProductsListing />
 
       {/* AI Insights and Widget Settings */}
       <div className="grid gap-6 md:grid-cols-2">

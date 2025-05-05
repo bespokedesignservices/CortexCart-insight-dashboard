@@ -16,7 +16,8 @@ import {
   ExternalLink, 
   MoreVertical,
   Search,
-  Loader2
+  Loader2,
+  Edit
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
