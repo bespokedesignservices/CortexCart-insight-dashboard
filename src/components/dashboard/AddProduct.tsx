@@ -318,7 +318,7 @@ const AddProduct: React.FC = () => {
                 <div className="p-4 rounded-md border">
                   <h4 className="font-medium mb-2">Etsy</h4>
                   <ol className="space-y-2 text-sm text-gray-500 list-decimal list-inside">
-                    <li>Go to Shop Manager > Listings</li>
+                    <li>Go to Shop Manager &gt; Listings</li>
                     <li>Click "Download Data" button</li>
                     <li>Select "CSV" format</li>
                     <li>Click "Download"</li>
