@@ -8,58 +8,35 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-
-// Mock inventory data
-const inventoryData = [
-  { id: "1", name: "Premium Leather Wallet", sku: "PLW-001", stock: 42, status: "In Stock", category: "Accessories" },
-  { id: "2", name: "Organic Cotton T-Shirt", sku: "OCT-001", stock: 78, status: "In Stock", category: "Clothing" },
-  { id: "3", name: "Wireless Earbuds Pro", sku: "WEP-001", stock: 15, status: "Low Stock", category: "Electronics" },
-  { id: "4", name: "Stainless Steel Water Bottle", sku: "SSWB-001", stock: 0, status: "Out of Stock", category: "Home & Kitchen" },
-  { id: "5", name: "Handcrafted Ceramic Mug", sku: "HCM-001", stock: 23, status: "In Stock", category: "Home & Kitchen" },
-];
+import { useProductsData } from "@/hooks/useProductsData";
 
 const InventoryManagement: React.FC = () => {
-  const [inventory, setInventory] = useState(inventoryData);
+  const { products, isLoading, updateProductStock } = useProductsData();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const { toast } = useToast();
 
-  const filteredInventory = inventory.filter((item) =>
+  const filteredInventory = products.filter((item) =>
     item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     item.sku.toLowerCase().includes(searchTerm.toLowerCase()) ||
     item.category.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleStockChange = (id: string, newStock: number) => {
-    setInventory(prev => prev.map(item => {
-      if (item.id === id) {
-        const status = newStock === 0 ? "Out of Stock" : newStock <= 15 ? "Low Stock" : "In Stock";
-        return { ...item, stock: newStock, status };
-      }
-      return item;
-    }));
-    
-    toast({
-      title: "Inventory updated",
-      description: "Product stock level has been updated successfully.",
-    });
-  };
-
   const handleEditItem = (item: any) => {
-    setSelectedProduct({...item, newStock: item.stock});
+    setSelectedProduct({...item, newStock: item.quantity});
   };
 
   const handleSaveEdit = () => {
     if (selectedProduct) {
-      handleStockChange(selectedProduct.id, selectedProduct.newStock);
+      updateProductStock(selectedProduct.id, selectedProduct.newStock);
       setSelectedProduct(null);
     }
   };
 
   const handleDamageItem = (id: string) => {
-    const product = inventory.find(item => item.id === id);
-    if (product && product.stock > 0) {
-      handleStockChange(id, product.stock - 1);
+    const product = products.find(item => item.id === id);
+    if (product && product.quantity > 0) {
+      updateProductStock(id, product.quantity - 1);
       
       toast({
         title: "Damaged item recorded",
@@ -68,7 +45,9 @@ const InventoryManagement: React.FC = () => {
     }
   };
 
-  const getStatusBadge = (status: string) => {
+  const getStatusBadge = (quantity: number) => {
+    const status = quantity === 0 ? "Out of Stock" : quantity <= 15 ? "Low Stock" : "In Stock";
+    
     switch (status) {
       case "In Stock":
         return <Badge className="bg-green-500">In Stock</Badge>;
@@ -103,7 +82,13 @@ const InventoryManagement: React.FC = () => {
         </div>
       </div>
 
-      {inventory.length > 0 ? (
+      {isLoading ? (
+        <div className="flex justify-center py-8">
+          <div className="animate-pulse text-center">
+            <p className="text-muted-foreground">Loading inventory data...</p>
+          </div>
+        </div>
+      ) : products.length > 0 ? (
         <div className="border rounded-md">
           <Table>
             <TableHeader>
@@ -122,8 +107,8 @@ const InventoryManagement: React.FC = () => {
                   <TableCell className="font-medium">{item.name}</TableCell>
                   <TableCell>{item.sku}</TableCell>
                   <TableCell>{item.category}</TableCell>
-                  <TableCell>{item.stock}</TableCell>
-                  <TableCell>{getStatusBadge(item.status)}</TableCell>
+                  <TableCell>{item.quantity}</TableCell>
+                  <TableCell>{getStatusBadge(item.quantity)}</TableCell>
                   <TableCell className="text-right">
                     <div className="flex justify-end gap-2">
                       <Dialog>
@@ -167,7 +152,7 @@ const InventoryManagement: React.FC = () => {
                         variant="ghost" 
                         size="icon" 
                         onClick={() => handleDamageItem(item.id)}
-                        disabled={item.stock <= 0}
+                        disabled={item.quantity <= 0}
                       >
                         <Trash2 className="h-4 w-4 text-red-500" />
                       </Button>

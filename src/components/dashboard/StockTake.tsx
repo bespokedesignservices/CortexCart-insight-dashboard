@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ClipboardCheck, ArrowRight, AlertCircle, Save, CheckSquare } from "lucide-react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
@@ -8,21 +8,38 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
+import { useProductsData } from "@/hooks/useProductsData";
 
-// Mock stock take data
-const stockData = [
-  { id: "1", name: "Premium Leather Wallet", sku: "PLW-001", expected: 42, counted: null, difference: null },
-  { id: "2", name: "Organic Cotton T-Shirt", sku: "OCT-001", expected: 78, counted: null, difference: null },
-  { id: "3", name: "Wireless Earbuds Pro", sku: "WEP-001", expected: 15, counted: null, difference: null },
-  { id: "4", name: "Stainless Steel Water Bottle", sku: "SSWB-001", expected: 8, counted: null, difference: null },
-  { id: "5", name: "Handcrafted Ceramic Mug", sku: "HCM-001", expected: 23, counted: null, difference: null },
-];
+interface StockTakeItem {
+  id: string;
+  name: string;
+  sku: string;
+  expected: number;
+  counted: number | null;
+  difference: number | null;
+}
 
 const StockTake: React.FC = () => {
-  const [items, setItems] = useState(stockData);
+  const { products, isLoading, updateProductStock } = useProductsData();
+  const [stockTakeItems, setStockTakeItems] = useState<StockTakeItem[]>([]);
   const [isStockTakeActive, setIsStockTakeActive] = useState(false);
   const [stockTakeDate, setStockTakeDate] = useState<string | null>(null);
   const { toast } = useToast();
+  
+  // Update the stock take items when products change
+  useEffect(() => {
+    if (products.length > 0) {
+      const items = products.map(product => ({
+        id: product.id,
+        name: product.name,
+        sku: product.sku,
+        expected: product.quantity,
+        counted: null,
+        difference: null
+      }));
+      setStockTakeItems(items);
+    }
+  }, [products]);
   
   const handleStartStockTake = () => {
     setIsStockTakeActive(true);
@@ -30,7 +47,7 @@ const StockTake: React.FC = () => {
   };
   
   const handleCountChange = (id: string, count: number) => {
-    setItems(prev => prev.map(item => {
+    setStockTakeItems(prev => prev.map(item => {
       if (item.id === id) {
         const difference = count - item.expected;
         return {
@@ -44,7 +61,7 @@ const StockTake: React.FC = () => {
   };
   
   const handleCompleteStockTake = () => {
-    const uncountedItems = items.filter(item => item.counted === null);
+    const uncountedItems = stockTakeItems.filter(item => item.counted === null);
     
     if (uncountedItems.length > 0) {
       toast({
@@ -55,8 +72,15 @@ const StockTake: React.FC = () => {
       return;
     }
     
-    // Calculate discrepancies
-    const discrepancies = items.filter(item => item.difference !== 0 && item.difference !== null);
+    // Calculate discrepancies and update stock quantities
+    const discrepancies = stockTakeItems.filter(item => item.difference !== 0 && item.difference !== null);
+    
+    // Update the product quantities based on the stock take
+    stockTakeItems.forEach(item => {
+      if (item.counted !== null && item.counted !== item.expected) {
+        updateProductStock(item.id, item.counted);
+      }
+    });
     
     toast({
       title: "Stock Take Completed",
@@ -80,14 +104,24 @@ const StockTake: React.FC = () => {
   };
   
   const getTotalCounts = () => {
-    const expected = items.reduce((sum, item) => sum + item.expected, 0);
-    const counted = items.reduce((sum, item) => sum + (item.counted || 0), 0);
+    const expected = stockTakeItems.reduce((sum, item) => sum + item.expected, 0);
+    const counted = stockTakeItems.reduce((sum, item) => sum + (item.counted || 0), 0);
     const difference = counted - expected;
     
     return { expected, counted, difference };
   };
   
   const totals = getTotalCounts();
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center py-8">
+        <div className="animate-pulse text-center">
+          <p className="text-muted-foreground">Loading inventory data...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -102,7 +136,7 @@ const StockTake: React.FC = () => {
         </div>
         
         {!isStockTakeActive ? (
-          <Button onClick={handleStartStockTake}>
+          <Button onClick={handleStartStockTake} disabled={products.length === 0}>
             <ClipboardCheck className="mr-2 h-4 w-4" />
             Start Stock Take
           </Button>
@@ -136,7 +170,7 @@ const StockTake: React.FC = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {items.map((item) => (
+                {stockTakeItems.map((item) => (
                   <TableRow key={item.id}>
                     <TableCell className="font-medium">{item.name}</TableCell>
                     <TableCell>{item.sku}</TableCell>
@@ -202,7 +236,7 @@ const StockTake: React.FC = () => {
           <p className="text-muted-foreground mt-2 mb-4 max-w-md">
             Start a new stock take to reconcile your physical inventory with your system records.
           </p>
-          <Button onClick={handleStartStockTake}>
+          <Button onClick={handleStartStockTake} disabled={products.length === 0}>
             Start Stock Take
           </Button>
         </div>

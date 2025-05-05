@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { Upload, FileUp, AlertTriangle, FileCode, PlusCircle } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { useProductsData } from "@/hooks/useProductsData";
 
 const productCategories = [
   "Clothing",
@@ -35,8 +35,9 @@ const AddProduct: React.FC = () => {
   const [productImage, setProductImage] = useState<File | null>(null);
   const [csvFile, setCsvFile] = useState<File | null>(null);
   const { toast } = useToast();
+  const { addProduct } = useProductsData();
 
-  const handleAddProduct = (e: React.FormEvent) => {
+  const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validation
@@ -49,9 +50,16 @@ const AddProduct: React.FC = () => {
       return;
     }
     
-    toast({
-      title: "Product Added",
-      description: `${productName} has been added to your inventory.`
+    // Add product to database
+    await addProduct({
+      name: productName,
+      sku: productSKU,
+      category: productCategory,
+      price: parseFloat(productPrice),
+      description: productDescription,
+      quantity: parseInt(productQuantity),
+      // We'd handle image upload separately in a real app
+      image_url: productImage ? URL.createObjectURL(productImage) : undefined
     });
     
     // Reset form
