@@ -77,34 +77,7 @@ const DashboardSidebar: React.FC = () => {
           ))}
         </nav>
 
-        <Separator className="my-4" />
-
-        {!isCollapsed && (
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="account">
-              <AccordionTrigger>Account</AccordionTrigger>
-              <AccordionContent>
-                <nav className="flex flex-col space-y-2">
-                  <NavItem href="/dashboard/account/profile" label="Profile" />
-                  <NavItem href="/dashboard/account/username" label="Username" />
-                  <NavItem href="/dashboard/account/password" label="Password" />
-                </nav>
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="notifications">
-              <AccordionTrigger>Notifications</AccordionTrigger>
-              <AccordionContent>
-                <nav className="flex flex-col space-y-2">
-                  <NavItem href="/dashboard/notifications/push" label="Push" />
-                  <NavItem href="/dashboard/notifications/email" label="Email" />
-                  <NavItem href="/dashboard/notifications/text" label="Text" />
-                </nav>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        )}
-
-        <Separator className="my-4" />
+              <Separator className="my-4" />
 
         <div className="space-y-2">
           <NavItem href="/help" icon={HelpCircle} label="Help" collapsed={isCollapsed} />

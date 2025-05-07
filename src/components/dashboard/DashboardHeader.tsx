@@ -28,7 +28,7 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({ userName }) => {
               <NavItem href="/dashboard/settings" label="Settings" icon={Settings} />
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavItem href="/dashboard/account" label="Profile" icon={User} />
+              <NavItem href="/dashboard/profile" label="Profile" icon={User} />
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
