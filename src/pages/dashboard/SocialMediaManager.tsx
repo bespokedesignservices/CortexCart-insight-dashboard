@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Switch } from "@/components/ui/switch";
@@ -21,9 +20,9 @@ const socialPlatforms: SocialPlatform[] = [
 
 // Placeholder data for connected accounts
 const mockConnectedAccounts = [
-  { id: "1", platform: "facebook", username: "yourbrand", lastSync: "2023-05-01T12:00:00Z", status: "connected" },
-  { id: "2", platform: "instagram", username: "yourbrand", lastSync: "2023-05-01T12:00:00Z", status: "connected" },
-  { id: "3", platform: "twitter", username: "yourbrand", lastSync: null, status: "disconnected" }
+  { id: "1", platform: "facebook", username: "yourbrand", lastSync: "2023-05-01T12:00:00Z", status: "connected" as const },
+  { id: "2", platform: "instagram", username: "yourbrand", lastSync: "2023-05-01T12:00:00Z", status: "connected" as const },
+  { id: "3", platform: "twitter", username: "yourbrand", lastSync: null, status: "disconnected" as const }
 ];
 
 // Placeholder data for customer messages

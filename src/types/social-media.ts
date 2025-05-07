@@ -24,3 +24,11 @@ export interface ConnectedAccount {
   lastSync: string | null;
   status: "connected" | "disconnected";
 }
+
+export interface MediaItem {
+  id: string;
+  name: string;
+  url: string;
+  type: string;
+  createdAt: string;
+}
