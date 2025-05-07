@@ -32,3 +32,17 @@ export interface MediaItem {
   type: string;
   createdAt: string;
 }
+
+export interface PostItem {
+  id: string;
+  platform: string;
+  content: string;
+  imageUrl?: string;
+  linkUrl?: string;
+  createdAt: string;
+  stats: {
+    engagement: number;
+    clicks: number;
+    effectiveness: number;
+  }
+}
