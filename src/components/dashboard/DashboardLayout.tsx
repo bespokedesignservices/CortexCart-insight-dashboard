@@ -6,6 +6,7 @@ import DashboardHeader from "./DashboardHeader";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/components/AuthContext";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Helmet } from "react-helmet";
 
 const DashboardLayout: React.FC = () => {
   const { user, isLoading } = useAuth();
@@ -58,20 +59,25 @@ const DashboardLayout: React.FC = () => {
   const userName = user.email?.split('@')[0] || "User";
 
   return (
-    <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-recoai-lightGray">
-        <DashboardSidebar />
-        <div className="flex-1 flex flex-col min-h-screen">
-          <DashboardHeader userName={userName} />
-          <main className="flex-1 p-4 md:p-6 overflow-auto">
-            <div className="mb-6">
-              <h1 className="text-2xl font-bold tracking-tight">{getPageTitle()}</h1>
-            </div>
-            <Outlet />
-          </main>
+    <>
+      <Helmet>
+        <title>{getPageTitle()} | RecoAI</title>
+      </Helmet>
+      <SidebarProvider>
+        <div className="min-h-screen flex w-full bg-recoai-lightGray">
+          <DashboardSidebar />
+          <div className="flex-1 flex flex-col min-h-screen">
+            <DashboardHeader userName={userName} />
+            <main className="flex-1 p-4 md:p-6 overflow-auto">
+              <div className="mb-6">
+                <h1 className="text-2xl font-bold tracking-tight">{getPageTitle()}</h1>
+              </div>
+              <Outlet />
+            </main>
+          </div>
         </div>
-      </div>
-    </SidebarProvider>
+      </SidebarProvider>
+    </>
   );
 };
 
