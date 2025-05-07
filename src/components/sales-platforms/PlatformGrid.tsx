@@ -1,6 +1,5 @@
 
 import { Code } from "lucide-react";
-import { useState } from "react";
 import { platformDetails } from "@/utils/platformDetails";
 
 interface PlatformGridProps {
