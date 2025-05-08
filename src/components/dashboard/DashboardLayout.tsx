@@ -69,9 +69,7 @@ const DashboardLayout: React.FC = () => {
           <div className="flex-1 flex flex-col min-h-screen ml-16 md:ml-64">
             <DashboardHeader userName={userName} />
             <main className="flex-1 p-4 md:p-6 overflow-auto">
-              <div className="mb-6">
-                <h1 className="text-2xl font-bold tracking-tight">{getPageTitle()}</h1>
-              </div>
+              {/* Removing the duplicate title here since each page will have its own title */}
               <Outlet />
             </main>
           </div>
