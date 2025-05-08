@@ -52,7 +52,7 @@ const DashboardSidebar: React.FC = () => {
   const isCollapsed = state === "collapsed";
 
   return (
-    <div className={`flex flex-col h-screen bg-white border-r shadow-sm ${isCollapsed ? 'w-16' : 'w-56 max-w-[25%]'} transition-all duration-200`}>
+    <div className={`flex flex-col h-screen bg-white border-r shadow-sm ${isCollapsed ? 'w-16' : 'w-64'} transition-all duration-200 fixed left-0 z-30`}>
       <div className="flex items-center justify-between py-3 px-4">
         <span className={`font-bold text-xl ${isCollapsed ? 'hidden' : 'block'}`}>RecoAI</span>
         <Button variant="ghost" size="icon" onClick={toggleSidebar}>
@@ -62,7 +62,7 @@ const DashboardSidebar: React.FC = () => {
 
       <Separator />
 
-      <div className="flex-grow p-4 flex flex-col">
+      <div className="flex-grow p-4 flex flex-col overflow-y-auto">
         <nav className="flex flex-col space-y-0.5">
           {sidebarItems.map((item) => (
             <NavItem
@@ -77,7 +77,7 @@ const DashboardSidebar: React.FC = () => {
           ))}
         </nav>
 
-              <Separator className="my-4" />
+        <Separator className="my-4" />
 
         <div className="space-y-2">
           <NavItem href="/help" icon={HelpCircle} label="Help" collapsed={isCollapsed} />

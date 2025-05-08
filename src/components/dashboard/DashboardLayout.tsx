@@ -66,7 +66,7 @@ const DashboardLayout: React.FC = () => {
       <SidebarProvider>
         <div className="min-h-screen flex w-full bg-recoai-lightGray">
           <DashboardSidebar />
-          <div className="flex-1 flex flex-col min-h-screen">
+          <div className="flex-1 flex flex-col min-h-screen ml-16 md:ml-64">
             <DashboardHeader userName={userName} />
             <main className="flex-1 p-4 md:p-6 overflow-auto">
               <div className="mb-6">
