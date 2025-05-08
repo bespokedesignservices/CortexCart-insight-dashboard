@@ -52,7 +52,7 @@ const DashboardSidebar: React.FC = () => {
   const isCollapsed = state === "collapsed";
 
   return (
-    <div className={`flex flex-col h-screen bg-white border-r shadow-sm ${isCollapsed ? 'w-16' : 'w-64'} transition-all duration-200 fixed left-0 z-30`}>
+    <div className={`flex flex-col h-screen bg-white border-r shadow-sm ${isCollapsed ? 'w-16' : 'w-64'} transition-all duration-200 fixed left-0 z-30 top-0`}>
       <div className="flex items-center justify-between py-3 px-4">
         <span className={`font-bold text-xl ${isCollapsed ? 'hidden' : 'block'}`}>RecoAI</span>
         <Button variant="ghost" size="icon" onClick={toggleSidebar}>

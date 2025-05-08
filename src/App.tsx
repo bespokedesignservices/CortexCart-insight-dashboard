@@ -45,6 +45,19 @@ import PushNotifications from "./pages/dashboard/notifications/Push";
 import EmailNotifications from "./pages/dashboard/notifications/Email";
 import TextNotifications from "./pages/dashboard/notifications/Text";
 
+// Security settings 
+import SecuritySettings from "./pages/dashboard/security";
+import TwoFactor from "./pages/dashboard/security/TwoFactor";
+import SecurityQuestions from "./pages/dashboard/security/SecurityQuestions";
+import ActiveSessions from "./pages/dashboard/security/ActiveSessions";
+
+// Billing settings 
+import BillingSettings from "./pages/dashboard/billing";
+import Subscription from "./pages/dashboard/billing/Subscription";
+import PaymentMethods from "./pages/dashboard/billing/PaymentMethods";
+import BillingHistory from "./pages/dashboard/billing/BillingHistory";
+import Receipts from "./pages/dashboard/billing/Receipts";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -90,6 +103,21 @@ const App = () => (
                 <Route path="push" element={<PushNotifications />} />
                 <Route path="email" element={<EmailNotifications />} />
                 <Route path="text" element={<TextNotifications />} />
+              </Route>
+
+              {/* Security nested */}
+              <Route path="security" element={<SecuritySettings />}>
+                <Route path="2fa" element={<TwoFactor />} />
+                <Route path="password" element={<SecurityQuestions />} />
+                <Route path="sessions" element={<ActiveSessions />} />
+              </Route>
+
+              {/* Billing nested */}
+              <Route path="billing" element={<BillingSettings />}>
+                <Route path="subscription" element={<Subscription />} />
+                <Route path="payment-methods" element={<PaymentMethods />} />
+                <Route path="invoices" element={<BillingHistory />} />
+                <Route path="receipts" element={<Receipts />} />
               </Route>
 
               <Route path="investors" element={<Investors />} />
