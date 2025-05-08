@@ -139,7 +139,7 @@ const TrackingCodeDisplay = ({ platform, storeId, selectedPlatformId }: Tracking
       </div>
       
       <p className="text-sm mb-3">
-        {platform.instructions}
+        {platform.instructions || `Add this tracking code to your ${platform.name} website.`}
       </p>
       
       {platform.settingsUrl && (
