@@ -20,6 +20,7 @@ import {
   HelpCircle,
   LogOut,
   CreditCard,
+  Sparkles,
 } from "lucide-react";
 
 interface AdminSidebarProps {
@@ -54,6 +55,11 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ onLogout }) => {
       title: "Stripe Settings",
       icon: CreditCard,
       path: "/admin/stripe-settings",
+    },
+    {
+      title: "AI Settings",
+      icon: Sparkles,
+      path: "/admin/ai-settings",
     },
     {
       title: "Settings",

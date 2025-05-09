@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -33,6 +34,7 @@ import Help from "./pages/Help";
 
 import SalesPlatforms from "./pages/dashboard/SalesPlatforms";
 import SocialMediaManager from "./pages/dashboard/SocialMediaManager";
+import AITools from "./pages/dashboard/AITools";
 
 import AccountSettings from "./pages/dashboard/account";
 import Username from "./pages/dashboard/account/Username";
@@ -59,6 +61,7 @@ import Receipts from "./pages/dashboard/billing/Receipts";
 
 // Add the route for the Stripe settings in the admin area
 import AdminStripeSettings from "./pages/admin/AdminStripeSettings";
+import AdminAISettings from "./pages/admin/AdminAISettings";
 
 const queryClient = new QueryClient();
 
@@ -91,6 +94,7 @@ const App = () => (
               <Route path="customers" element={<Customers />} />
               <Route path="sales-platforms" element={<SalesPlatforms />} />
               <Route path="social-media-manager" element={<SocialMediaManager />} />
+              <Route path="ai-tools" element={<AITools />} />
               <Route path="settings" element={<Settings />} />
               
               {/* Account settings nested */}
@@ -133,6 +137,7 @@ const App = () => (
               <Route path="users" element={<AdminUsers />} />
               <Route path="settings" element={<AdminSettings />} />
               <Route path="stripe-settings" element={<AdminStripeSettings />} />
+              <Route path="ai-settings" element={<AdminAISettings />} />
             </Route>
             
             {/* Catch-all route */}
