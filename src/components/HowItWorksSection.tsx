@@ -1,8 +1,22 @@
 
-import React from "react";
-import { Code, BarChart, Lightbulb } from "lucide-react";
+import React, { useState, useRef } from "react";
+import { Code, BarChart, Lightbulb, Play, Pause } from "lucide-react";
 
 const HowItWorksSection: React.FC = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  
+  const toggleVideo = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   const steps = [
     {
       number: "01",
@@ -72,12 +86,28 @@ const HowItWorksSection: React.FC = () => {
                 </svg>
               </button>
             </div>
-            <div className="md:w-1/2 bg-recoai-purple/5 rounded-lg aspect-video flex items-center justify-center">
-              <div className="h-16 w-16 rounded-full bg-recoai-purple/90 text-white flex items-center justify-center cursor-pointer">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8 5V19L19 12L8 5Z" fill="currentColor"/>
-                </svg>
+            <div className="md:w-1/2 relative rounded-lg overflow-hidden">
+              <div 
+                className={`absolute inset-0 bg-black/20 flex items-center justify-center z-10 cursor-pointer ${isPlaying ? 'opacity-0 hover:opacity-100 transition-opacity' : ''}`}
+                onClick={toggleVideo}
+              >
+                <div className="h-16 w-16 rounded-full bg-recoai-purple/90 text-white flex items-center justify-center">
+                  {isPlaying ? (
+                    <Pause className="h-6 w-6" />
+                  ) : (
+                    <Play className="h-6 w-6 ml-1" />
+                  )}
+                </div>
               </div>
+              <video 
+                ref={videoRef}
+                className="w-full h-auto rounded-lg aspect-video"
+                poster="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                onEnded={() => setIsPlaying(false)}
+              >
+                <source src="/demo.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>

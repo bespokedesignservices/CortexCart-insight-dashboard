@@ -4,6 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const HeroSection: React.FC = () => {
+  const scrollToHowItWorks = () => {
+    const element = document.getElementById("how-it-works");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-b from-white to-recoai-lightGray">
       <div className="container mx-auto px-4 md:px-6">
@@ -19,8 +26,13 @@ const HeroSection: React.FC = () => {
               <Button asChild size="lg" className="bg-recoai-purple hover:bg-recoai-purple/90 text-white px-8">
                 <Link to="/register">Get Started Free</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-recoai-purple text-recoai-purple hover:bg-recoai-purple/10">
-                <Link to="/#how-it-works">See How It Works</Link>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-recoai-purple text-recoai-purple hover:bg-recoai-purple/10"
+                onClick={scrollToHowItWorks}
+              >
+                See How It Works
               </Button>
             </div>
             <p className="text-sm text-recoai-gray mt-4">
