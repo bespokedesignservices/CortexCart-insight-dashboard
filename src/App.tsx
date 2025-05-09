@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -57,6 +56,9 @@ import Subscription from "./pages/dashboard/billing/Subscription";
 import PaymentMethods from "./pages/dashboard/billing/PaymentMethods";
 import BillingHistory from "./pages/dashboard/billing/BillingHistory";
 import Receipts from "./pages/dashboard/billing/Receipts";
+
+// Add the route for the Stripe settings in the admin area
+import AdminStripeSettings from "./pages/admin/AdminStripeSettings";
 
 const queryClient = new QueryClient();
 
@@ -130,6 +132,7 @@ const App = () => (
               <Route path="media" element={<AdminMedia />} />
               <Route path="users" element={<AdminUsers />} />
               <Route path="settings" element={<AdminSettings />} />
+              <Route path="stripe-settings" element={<AdminStripeSettings />} />
             </Route>
             
             {/* Catch-all route */}
