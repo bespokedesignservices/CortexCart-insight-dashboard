@@ -17,6 +17,11 @@ const HowItWorksSection: React.FC = () => {
     }
   };
 
+  // Handle video end event
+  const handleVideoEnd = () => {
+    setIsPlaying(false);
+  };
+
   const steps = [
     {
       number: "01",
@@ -103,7 +108,7 @@ const HowItWorksSection: React.FC = () => {
                 ref={videoRef}
                 className="w-full h-auto rounded-lg aspect-video"
                 poster="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                onEnded={() => setIsPlaying(false)}
+                onEnded={handleVideoEnd}
               >
                 <source src="/demo.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
