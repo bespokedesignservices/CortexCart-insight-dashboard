@@ -26,14 +26,24 @@
 5.  **Take Action:** Use the insights and recommendations to make informed decisions and improve your website's performance.
 
 ---
+## Screen Shots ##
+## Onboarding landing page ##
+<img width="1426" alt="Screenshot 2025-06-01 at 06 27 25" src="https://github.com/user-attachments/assets/4be0d33c-a317-4a7e-ad5f-ff9f66fe6ad3" />
 
+<img width="1445" alt="Screenshot 2025-06-01 at 06 28 45" src="https://github.com/user-attachments/assets/068277ee-c791-4f27-9ba0-0d77a4e98206" />
+
+<img width="1441" alt="Screenshot 2025-06-01 at 06 31 07" src="https://github.com/user-attachments/assets/6a0210c3-3ab5-41dc-b303-b880ede9dfa0" />
+
+
+
+---
 ## Getting Started 🏁
 
 1.  **Clone the repository (Optional - if you plan to contribute or view source):**
     ```bash
     git clone [https://github.com/bespokedesignservices/recoai-insight-dashboard.git](https://github.com/bespokedesignservices/recoai-insight-dashboard.git)
     ```
-2.  **Sign up for a RecoAI account:** Visit recoai.com to create an account.
+2.  **Sign up for a RecoAI account:** Visit [test beta link](https://preview--recoai-insight-dashboard.lovable.app) to create an account.
 3.  **Retrieve your unique JavaScript snippet:** You'll find this in your RecoAI dashboard after signing up.
 4.  **Add the snippet to your website:**
     ```html
