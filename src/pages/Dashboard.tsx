@@ -13,6 +13,9 @@ import AbandonedCartRecovery from "@/components/dashboard/AbandonedCartRecovery"
 import CLVPrediction from "@/components/dashboard/CLVPrediction";
 import MobileAnalytics from "@/components/dashboard/MobileAnalytics";
 import MarketingPlatforms from "@/components/dashboard/MarketingPlatforms";
+import UserBehaviorHeatmaps from "@/components/dashboard/UserBehaviorHeatmaps";
+import CampaignROICalculator from "@/components/dashboard/CampaignROICalculator";
+import ThemeCustomization from "@/components/dashboard/ThemeCustomization";
 import { useTrackingData } from "@/hooks/useTrackingData";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -44,12 +47,14 @@ const Dashboard: React.FC = () => {
       </div>
 
       <Tabs defaultValue="overview" className="w-full">
-        <TabsList className="grid grid-cols-6 w-full max-w-4xl">
+        <TabsList className="grid grid-cols-8 w-full max-w-6xl overflow-x-auto">
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="marketing">Marketing</TabsTrigger>
           <TabsTrigger value="cart-recovery">Cart Recovery</TabsTrigger>
           <TabsTrigger value="clv">Customer LTV</TabsTrigger>
           <TabsTrigger value="mobile">Mobile Analytics</TabsTrigger>
+          <TabsTrigger value="heatmaps">Heatmaps</TabsTrigger>
+          <TabsTrigger value="roi-calculator">ROI Calculator</TabsTrigger>
           <TabsTrigger value="products">Products</TabsTrigger>
         </TabsList>
         
@@ -96,6 +101,14 @@ const Dashboard: React.FC = () => {
 
         <TabsContent value="mobile" className="mt-6">
           <MobileAnalytics />
+        </TabsContent>
+
+        <TabsContent value="heatmaps" className="mt-6">
+          <UserBehaviorHeatmaps />
+        </TabsContent>
+
+        <TabsContent value="roi-calculator" className="mt-6">
+          <CampaignROICalculator />
         </TabsContent>
 
         <TabsContent value="products" className="mt-6">
