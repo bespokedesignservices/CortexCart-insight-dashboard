@@ -33,39 +33,6 @@ const Careers: React.FC = () => {
     },
   ];
 
-  const openings = [
-    {
-      title: "Senior Frontend Engineer",
-      department: "Engineering",
-      location: "Remote",
-      type: "Full-time",
-    },
-    {
-      title: "Machine Learning Engineer",
-      department: "Engineering",
-      location: "Remote",
-      type: "Full-time",
-    },
-    {
-      title: "Product Manager",
-      department: "Product",
-      location: "Remote",
-      type: "Full-time",
-    },
-    {
-      title: "Customer Success Manager",
-      department: "Customer Success",
-      location: "Remote",
-      type: "Full-time",
-    },
-    {
-      title: "Content Marketing Specialist",
-      department: "Marketing",
-      location: "Remote",
-      type: "Full-time",
-    },
-  ];
-
   return (
     <div className="min-h-screen flex flex-col">
       <LandingNavbar />
@@ -110,22 +77,14 @@ const Careers: React.FC = () => {
             
             <div className="mb-16">
               <h2 className="text-2xl font-bold mb-8">Open Positions</h2>
-              <div className="space-y-4">
-                {openings.map((job, index) => (
-                  <div key={index} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between">
-                      <div>
-                        <h3 className="text-lg font-semibold">{job.title}</h3>
-                        <p className="text-recoai-gray">
-                          {job.department} • {job.location} • {job.type}
-                        </p>
-                      </div>
-                      <Button className="mt-4 md:mt-0 bg-recoai-purple hover:bg-recoai-purple/90 text-white">
-                        Apply Now
-                      </Button>
-                    </div>
-                  </div>
-                ))}
+              <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center">
+                <h3 className="text-xl font-semibold mb-4">No Current Openings</h3>
+                <p className="text-recoai-gray mb-6">
+                  There are currently no open positions. Please check back later.
+                </p>
+                <p className="text-sm text-recoai-gray">
+                  We are always looking for exceptional talent. If you believe you would be a great fit for our team, feel free to reach out to us.
+                </p>
               </div>
             </div>
             

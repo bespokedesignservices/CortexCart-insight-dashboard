@@ -1,10 +1,11 @@
 
 import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
+import { Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/components/AuthContext";
+import { LanguageProvider } from "@/context/LanguageContext";
 import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import DashboardLayout from "./components/dashboard/DashboardLayout";
@@ -31,6 +32,7 @@ import Customers from "./pages/dashboard/Customers";
 import Settings from "./pages/dashboard/Settings";
 import Investors from "./pages/dashboard/Investors";
 import Help from "./pages/Help";
+import Guides from "./pages/Guides";
 
 import SalesPlatforms from "./pages/dashboard/SalesPlatforms";
 import SocialMediaManager from "./pages/dashboard/SocialMediaManager";
@@ -68,83 +70,86 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <AuthProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Registration />} />
-            <Route path="/features" element={<Features />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/integrations" element={<Integrations />} />
-            <Route path="/roadmap" element={<Roadmap />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/careers" element={<Careers />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/help" element={<Help />} />
-            
-            {/* Dashboard Routes */}
-            <Route path="/dashboard" element={<DashboardLayout />}>
-              <Route index element={<Dashboard />} />
-              <Route path="analytics" element={<Analytics />} />
-              <Route path="products" element={<Products />} />
-              <Route path="customers" element={<Customers />} />
-              <Route path="sales-platforms" element={<SalesPlatforms />} />
-              <Route path="social-media-manager" element={<SocialMediaManager />} />
-              <Route path="ai-tools" element={<AITools />} />
-              <Route path="settings" element={<Settings />} />
+      <LanguageProvider>
+        <AuthProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Registration />} />
+              <Route path="/features" element={<Features />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/integrations" element={<Integrations />} />
+              <Route path="/roadmap" element={<Roadmap />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/careers" element={<Careers />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/help" element={<Help />} />
+              <Route path="/guides" element={<Guides />} />
               
-              {/* Account settings nested */}
-              <Route path="account" element={<AccountSettings />}>
-                <Route path="username" element={<Username />} />
-                <Route path="password" element={<Password />} />
-                <Route path="profile" element={<Profile />} />
-              </Route>
+              {/* Dashboard Routes */}
+              <Route path="/dashboard" element={<DashboardLayout />}>
+                <Route index element={<Dashboard />} />
+                <Route path="analytics" element={<Analytics />} />
+                <Route path="products" element={<Products />} />
+                <Route path="customers" element={<Customers />} />
+                <Route path="sales-platforms" element={<SalesPlatforms />} />
+                <Route path="social-media-manager" element={<SocialMediaManager />} />
+                <Route path="ai-tools" element={<AITools />} />
+                <Route path="settings" element={<Settings />} />
+                
+                {/* Account settings nested */}
+                <Route path="account" element={<AccountSettings />}>
+                  <Route path="username" element={<Username />} />
+                  <Route path="password" element={<Password />} />
+                  <Route path="profile" element={<Profile />} />
+                </Route>
 
-              {/* Notifications nested */}
-              <Route path="notifications" element={<NotificationSettings />}>
-                <Route path="push" element={<PushNotifications />} />
-                <Route path="email" element={<EmailNotifications />} />
-                <Route path="text" element={<TextNotifications />} />
-              </Route>
+                {/* Notifications nested */}
+                <Route path="notifications" element={<NotificationSettings />}>
+                  <Route path="push" element={<PushNotifications />} />
+                  <Route path="email" element={<EmailNotifications />} />
+                  <Route path="text" element={<TextNotifications />} />
+                </Route>
 
-              {/* Security nested */}
-              <Route path="security" element={<SecuritySettings />}>
-                <Route path="2fa" element={<TwoFactor />} />
-                <Route path="password" element={<SecurityQuestions />} />
-                <Route path="sessions" element={<ActiveSessions />} />
-              </Route>
+                {/* Security nested */}
+                <Route path="security" element={<SecuritySettings />}>
+                  <Route path="2fa" element={<TwoFactor />} />
+                  <Route path="password" element={<SecurityQuestions />} />
+                  <Route path="sessions" element={<ActiveSessions />} />
+                </Route>
 
-              {/* Billing nested */}
-              <Route path="billing" element={<BillingSettings />}>
-                <Route path="subscription" element={<Subscription />} />
-                <Route path="payment-methods" element={<PaymentMethods />} />
-                <Route path="invoices" element={<BillingHistory />} />
-                <Route path="receipts" element={<Receipts />} />
-              </Route>
+                {/* Billing nested */}
+                <Route path="billing" element={<BillingSettings />}>
+                  <Route path="subscription" element={<Subscription />} />
+                  <Route path="payment-methods" element={<PaymentMethods />} />
+                  <Route path="invoices" element={<BillingHistory />} />
+                  <Route path="receipts" element={<Receipts />} />
+                </Route>
 
-              <Route path="investors" element={<Investors />} />
-            </Route>
-            
-            {/* Admin Routes */}
-            <Route path="/admin" element={<AdminLayout />}>
-              <Route index element={<AdminDashboard />} />
-              <Route path="pages" element={<AdminPages />} />
-              <Route path="media" element={<AdminMedia />} />
-              <Route path="users" element={<AdminUsers />} />
-              <Route path="settings" element={<AdminSettings />} />
-              <Route path="stripe-settings" element={<AdminStripeSettings />} />
-              <Route path="ai-settings" element={<AdminAISettings />} />
-            </Route>
-            
-            {/* Catch-all route */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </AuthProvider>
+                <Route path="investors" element={<Investors />} />
+              </Route>
+              
+              {/* Admin Routes */}
+              <Route path="/admin" element={<AdminLayout />}>
+                <Route index element={<AdminDashboard />} />
+                <Route path="pages" element={<AdminPages />} />
+                <Route path="media" element={<AdminMedia />} />
+                <Route path="users" element={<AdminUsers />} />
+                <Route path="settings" element={<AdminSettings />} />
+                <Route path="stripe-settings" element={<AdminStripeSettings />} />
+                <Route path="ai-settings" element={<AdminAISettings />} />
+              </Route>
+              
+              {/* Catch-all route */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </AuthProvider>
+      </LanguageProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
