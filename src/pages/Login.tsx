@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -6,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { InfoIcon, EyeIcon, EyeOffIcon } from "lucide-react";
+import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 const Login: React.FC = () => {
@@ -85,11 +84,6 @@ const Login: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const handleTestLogin = () => {
-    setEmail("demo@recoai.com");
-    setPassword("demopassword");
   };
 
   return (
@@ -176,20 +170,6 @@ const Login: React.FC = () => {
                   </button>
                 </div>
               </div>
-
-              <Alert className="bg-blue-50 border-blue-200">
-                <InfoIcon className="h-4 w-4 text-blue-600" />
-                <AlertDescription className="text-sm text-blue-700">
-                  <span className="font-semibold">Test Account:</span> demo@recoai.com / demopassword
-                  <Button 
-                    variant="link" 
-                    className="p-0 h-auto text-blue-700 underline" 
-                    onClick={handleTestLogin}
-                  >
-                    Use test account
-                  </Button>
-                </AlertDescription>
-              </Alert>
 
               <Button
                 type="submit"
