@@ -4,6 +4,7 @@ import { NavigationMenu, NavigationMenuList, NavigationMenuItem } from "@/compon
 import { NavItem } from "@/components/ui/nav-item";
 import { Bell, Settings, User } from "lucide-react";
 import { Link } from "react-router-dom";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 interface DashboardHeaderProps {
   userName: string;
@@ -19,6 +20,7 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({ userName }) => {
       </div>
       
       <div className="flex items-center gap-4">
+        <LanguageSwitcher variant="minimal" />
         <NavigationMenu>
           <NavigationMenuList className="flex gap-1">
             <NavigationMenuItem>
