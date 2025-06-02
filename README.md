@@ -1,6 +1,7 @@
-# RecoAI 🚀
 
-**Unlock valuable insights into your customer's purchasing and Browse behavior with RecoAI!** This AI-powered dashboard uses a simple JavaScript snippet that can be easily integrated into any website. RecoAI empowers you to take actionable steps to improve sales, enhance usability, and boost product discoverability in real-time.
+# CortexCart 🚀
+
+**Unlock valuable insights into your customer's purchasing and Browse behavior with CortexCart!** This AI-powered dashboard uses a simple JavaScript snippet that can be easily integrated into any website. CortexCart empowers you to take actionable steps to improve sales, enhance usability, and boost product discoverability in real-time.
 
 ---
 
@@ -19,7 +20,7 @@
 
 ## How It Works ⚙️
 
-1.  **Sign Up:** Create your RecoAI account.
+1.  **Sign Up:** Create your CortexCart account.
 2.  **Integrate:** Copy the provided JavaScript snippet and paste it into the `<head>` or `<body>` section of your website's HTML.
 3.  **Collect Data:** The script securely and anonymously tracks relevant user interactions (e.g., page views, clicks, add-to-carts, purchases).
 4.  **Analyze & Visualize:** Our AI algorithms process this data and present it in an intuitive dashboard.
@@ -41,15 +42,15 @@
 
 1.  **Clone the repository (Optional - if you plan to contribute or view source):**
     ```bash
-    git clone [https://github.com/bespokedesignservices/recoai-insight-dashboard.git](https://github.com/bespokedesignservices/recoai-insight-dashboard.git)
+    git clone [https://github.com/bespokedesignservices/cortexcart-insight-dashboard.git](https://github.com/bespokedesignservices/cortexcart-insight-dashboard.git)
     ```
-2.  **Sign up for a RecoAI account:** Visit [test beta link](https://preview--recoai-insight-dashboard.lovable.app) to create an account.
-3.  **Retrieve your unique JavaScript snippet:** You'll find this in your RecoAI dashboard after signing up.
+2.  **Sign up for a CortexCart account:** Visit [test beta link](https://preview--cortexcart-insight-dashboard.lovable.app) to create an account.
+3.  **Retrieve your unique JavaScript snippet:** You'll find this in your CortexCart dashboard after signing up.
 4.  **Add the snippet to your website:**
     ```html
-    <script async src="[Your Unique RecoAI Script URL Here]"></script>
+    <script async src="[Your Unique CortexCart Script URL Here]"></script>
     ```
-5.  **Log in to your RecoAI dashboard** to start seeing insights once data collection begins!
+5.  **Log in to your CortexCart dashboard** to start seeing insights once data collection begins!
 
 ---
 
@@ -64,7 +65,7 @@
 
 ## Contributing 🤝
 
-We welcome contributions to make RecoAI even better! If you'd like to contribute, please:
+We welcome contributions to make CortexCart even better! If you'd like to contribute, please:
 
 1.  Fork the Project.
 2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
@@ -88,4 +89,4 @@ This project is licensed under the MIT - see the `LICENSE.md` file for details.
 
 ---
 
-**Start understanding your customers better and supercharge your sales with RecoAI today!**
+**Start understanding your customers better and supercharge your sales with CortexCart today!**

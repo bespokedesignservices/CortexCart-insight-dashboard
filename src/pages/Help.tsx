@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -22,8 +21,8 @@ const Help: React.FC = () => {
           a: "Go to your Dashboard, find the Widget Code section, copy the JavaScript code, and paste it before the </head> tag in your website's HTML. The widget will start collecting data within 24 hours."
         },
         {
-          q: "What platforms does RecoAI integrate with?",
-          a: "RecoAI integrates with major e-commerce platforms including Shopify, WooCommerce, Magento, BigCommerce, and custom websites. We also connect with Meta Ads, Google Ads, TikTok, LinkedIn, and Mailchimp."
+          q: "What platforms does CortexCart integrate with?",
+          a: "CortexCart integrates with major e-commerce platforms including Shopify, WooCommerce, Magento, BigCommerce, and custom websites. We also connect with Meta Ads, Google Ads, TikTok, LinkedIn, and Mailchimp."
         },
         {
           q: "How long does it take to see data in my dashboard?",
@@ -111,7 +110,7 @@ const Help: React.FC = () => {
     },
     {
       title: "Community Forum",
-      description: "Connect with other RecoAI users",
+      description: "Connect with other CortexCart users",
       icon: <MessageCircle className="h-6 w-6 text-purple-500" />,
       link: "#",
       badge: "New"
@@ -132,7 +131,7 @@ const Help: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Help Center</h1>
-          <p className="text-xl text-gray-600 mb-8">Find answers, get support, and learn how to make the most of RecoAI</p>
+          <p className="text-xl text-gray-600 mb-8">Find answers, get support, and learn how to make the most of CortexCart</p>
           
           <div className="max-w-md mx-auto relative">
             <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />

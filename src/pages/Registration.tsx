@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -118,7 +117,7 @@ const Registration: React.FC = () => {
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex justify-between items-center">
             <a href="/" className="flex items-center space-x-2">
-              <span className="text-2xl font-bold gradient-text">RecoAI</span>
+              <span className="text-2xl font-bold gradient-text">CortexCart</span>
             </a>
           </div>
         </div>

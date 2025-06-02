@@ -1,4 +1,3 @@
-
 import React from "react";
 import LandingNavbar from "@/components/LandingNavbar";
 import LandingFooter from "@/components/LandingFooter";
@@ -17,7 +16,7 @@ const Features: React.FC = () => {
             </h1>
             
             <p className="text-lg text-recoai-gray mb-12">
-              Discover how RecoAI's comprehensive suite of features can transform your e-commerce store, enhance customer experience, and drive more sales.
+              Discover how CortexCart's comprehensive suite of features can transform your e-commerce store, enhance customer experience, and drive more sales.
             </p>
             
             <div className="grid gap-10 mb-16">

@@ -16,25 +16,25 @@ const WidgetCode: React.FC = () => {
   
   const widgetCode = `<script>
   (function(r,e,c,o,a,i){
-    r.RecoAITracker = { 
+    r.CortexCartTracker = { 
       storeId: "${storeId}",
       endpoint: "${window.location.origin}/api/track"
     };
-    r.rctk = r.rctk || function() {
-      (r.rctk.q = r.rctk.q || []).push(arguments);
+    r.cctk = r.cctk || function() {
+      (r.cctk.q = r.cctk.q || []).push(arguments);
       
       // Log the event to console for debugging
-      console.log('RecoAI Event:', arguments);
+      console.log('CortexCart Event:', arguments);
       
       // Send data to tracking endpoint
       if (arguments[0] === 'event') {
         const payload = {
-          storeId: r.RecoAITracker.storeId,
+          storeId: r.CortexCartTracker.storeId,
           event: arguments[1],
           data: arguments[2] || {}
         };
         
-        fetch(r.RecoAITracker.endpoint, {
+        fetch(r.CortexCartTracker.endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
@@ -44,7 +44,7 @@ const WidgetCode: React.FC = () => {
     };
     
     // Auto-track page views
-    rctk('event', 'page_view', { 
+    cctk('event', 'page_view', { 
       url: window.location.href,
       title: document.title,
       referrer: document.referrer
@@ -54,7 +54,7 @@ const WidgetCode: React.FC = () => {
     document.addEventListener('click', function(e) {
       const target = e.target.closest('a, button') || e.target;
       if (target.tagName) {
-        rctk('event', 'click', {
+        cctk('event', 'click', {
           element: target.tagName.toLowerCase(),
           text: target.innerText,
           path: target.getAttribute('href') || '',
@@ -88,7 +88,7 @@ const WidgetCode: React.FC = () => {
     <Card>
       <CardHeader>
         <CardTitle className="text-lg font-semibold flex items-center justify-between">
-          <span>Your RecoAI Tracking Widget</span>
+          <span>Your CortexCart Tracking Widget</span>
           <Button
             variant="outline"
             size="sm"

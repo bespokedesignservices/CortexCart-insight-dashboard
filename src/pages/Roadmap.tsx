@@ -34,7 +34,7 @@ const Roadmap: React.FC = () => {
     {
       quarter: "Q2 2024",
       title: "Multi-language Support",
-      description: "Full localization of the RecoAI dashboard and recommendation widgets in 10+ languages, making our platform accessible to global e-commerce businesses.",
+      description: "Full localization of the CortexCart dashboard and recommendation widgets in 10+ languages, making our platform accessible to global e-commerce businesses.",
       status: "beta",
     },
     {
@@ -70,7 +70,7 @@ const Roadmap: React.FC = () => {
               Product <span className="gradient-text">Roadmap</span>
             </h1>
             <p className="text-lg text-recoai-gray mb-16">
-              At RecoAI, we're constantly working to improve our platform and add new features.
+              At CortexCart, we're constantly working to improve our platform and add new features.
               Here's a look at what we've recently launched and what's coming next.
             </p>
             

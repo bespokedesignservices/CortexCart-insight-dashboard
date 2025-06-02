@@ -1,98 +1,105 @@
-
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const LandingNavbar: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const scrollToSection = (sectionId: string) => {
-    setIsMenuOpen(false);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const [open, setOpen] = useState(false);
 
   return (
-    <nav className="w-full py-4 bg-white/90 backdrop-blur-sm fixed top-0 z-50 border-b">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-bold gradient-text">RecoAI</span>
-          </Link>
-          
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => scrollToSection("features")}
-              className="text-recoai-darkGray hover:text-recoai-purple transition-colors"
-            >
-              Features
-            </button>
-            <button 
-              onClick={() => scrollToSection("how-it-works")}
-              className="text-recoai-darkGray hover:text-recoai-purple transition-colors"
-            >
-              How It Works
-            </button>
-            <button 
-              onClick={() => scrollToSection("pricing")}
-              className="text-recoai-darkGray hover:text-recoai-purple transition-colors"
-            >
-              Pricing
-            </button>
-            <Link to="/login" className="text-recoai-darkGray hover:text-recoai-purple transition-colors">
-              Log In
-            </Link>
-            <Button asChild className="bg-recoai-purple hover:bg-recoai-purple/90">
-              <Link to="/register">Get Started</Link>
+    <nav className="bg-white py-4 shadow-sm">
+      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
+        <Link to="/" className="flex items-center space-x-2">
+          <span className="text-2xl font-bold gradient-text">CortexCart</span>
+        </Link>
+
+      <nav className="hidden md:flex items-center space-x-8">
+        <Link to="/features" className="text-recoai-gray hover:text-recoai-purple transition-colors">
+          Features
+        </Link>
+        <Link to="/pricing" className="text-recoai-gray hover:text-recoai-purple transition-colors">
+          Pricing
+        </Link>
+        <Link to="/integrations" className="text-recoai-gray hover:text-recoai-purple transition-colors">
+          Integrations
+        </Link>
+        <Link to="/roadmap" className="text-recoai-gray hover:text-recoai-purple transition-colors">
+          Roadmap
+        </Link>
+        <Link to="/about" className="text-recoai-gray hover:text-recoai-purple transition-colors">
+          About
+        </Link>
+        <Link to="/contact" className="text-recoai-gray hover:text-recoai-purple transition-colors">
+          Contact
+        </Link>
+      </nav>
+
+      <div className="flex items-center space-x-4">
+        <LanguageSwitcher />
+        <Link to="/login">
+          <Button variant="ghost" className="text-recoai-gray hover:text-recoai-purple">
+            Login
+          </Button>
+        </Link>
+        <Link to="/register">
+          <Button className="bg-recoai-purple hover:bg-recoai-purple/90 text-white">
+            Start Free Trial
+          </Button>
+        </Link>
+      </div>
+
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger asChild>
+            <Button variant="ghost" className="md:hidden">
+              <Menu className="h-5 w-5" />
             </Button>
-          </div>
-          
-          {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden text-recoai-darkGray"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-        
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden flex flex-col space-y-4 mt-4 py-4 animate-fade-in">
-            <button 
-              onClick={() => scrollToSection("features")}
-              className="text-recoai-darkGray hover:text-recoai-purple transition-colors"
-            >
+          </SheetTrigger>
+          <SheetContent side="right" className="w-full sm:w-2/3 md:w-1/2">
+            <SheetHeader className="space-y-2 text-left">
+              <SheetTitle>Menu</SheetTitle>
+              <SheetDescription>
+                Navigate through CortexCart
+              </SheetDescription>
+            </SheetHeader>
+          <div className="flex flex-col space-y-4">
+            <Link to="/features" className="text-recoai-gray hover:text-recoai-purple transition-colors">
               Features
-            </button>
-            <button 
-              onClick={() => scrollToSection("how-it-works")}
-              className="text-recoai-darkGray hover:text-recoai-purple transition-colors"
-            >
-              How It Works
-            </button>
-            <button 
-              onClick={() => scrollToSection("pricing")}
-              className="text-recoai-darkGray hover:text-recoai-purple transition-colors"
-            >
-              Pricing
-            </button>
-            <Link 
-              to="/login" 
-              className="text-recoai-darkGray hover:text-recoai-purple transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Log In
             </Link>
-            <Button asChild className="bg-recoai-purple hover:bg-recoai-purple/90 w-full">
-              <Link to="/register" onClick={() => setIsMenuOpen(false)}>Get Started</Link>
-            </Button>
+            <Link to="/pricing" className="text-recoai-gray hover:text-recoai-purple transition-colors">
+              Pricing
+            </Link>
+            <Link to="/integrations" className="text-recoai-gray hover:text-recoai-purple transition-colors">
+              Integrations
+            </Link>
+            <Link to="/roadmap" className="text-recoai-gray hover:text-recoai-purple transition-colors">
+              Roadmap
+            </Link>
+            <Link to="/about" className="text-recoai-gray hover:text-recoai-purple transition-colors">
+              About
+            </Link>
+            <Link to="/contact" className="text-recoai-gray hover:text-recoai-purple transition-colors">
+              Contact
+            </Link>
+            <div className="border-t pt-4">
+              <LanguageSwitcher />
+              <div className="flex flex-col space-y-2 mt-4">
+                <Link to="/login">
+                  <Button variant="ghost" className="w-full text-recoai-gray hover:text-recoai-purple">
+                    Login
+                  </Button>
+                </Link>
+                <Link to="/register">
+                  <Button className="w-full bg-recoai-purple hover:bg-recoai-purple/90 text-white">
+                    Start Free Trial
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
-        )}
+          </SheetContent>
+        </Sheet>
       </div>
     </nav>
   );

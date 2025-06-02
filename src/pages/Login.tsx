@@ -69,7 +69,7 @@ const Login: React.FC = () => {
         console.log("Login successful:", data.user);
         toast({
           title: "Login successful",
-          description: "Welcome back to RecoAI Dashboard!",
+          description: "Welcome back to CortexCart Dashboard!",
         });
         navigate("/dashboard");
       }
@@ -92,7 +92,7 @@ const Login: React.FC = () => {
       <div className="w-full md:w-1/2 p-8 flex flex-col justify-center items-center text-center md:text-left">
         <div className="max-w-md mx-auto md:mx-0">
           <h1 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">
-            Unlock Powerful E-commerce Insights with RecoAI
+            Unlock Powerful E-commerce Insights with CortexCart
           </h1>
           <p className="text-lg mb-6 text-gray-700">
             Start your <span className="font-bold">14-day free trial</span> today and transform your online store with AI-powered analytics.
@@ -104,7 +104,7 @@ const Login: React.FC = () => {
               className="w-full rounded-lg"
             />
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-white">
-              <p className="text-sm">RecoAI dashboard in action, helping store owners increase sales by 32% on average</p>
+              <p className="text-sm">CortexCart dashboard in action, helping store owners increase sales by 32% on average</p>
             </div>
           </div>
         </div>
@@ -114,7 +114,7 @@ const Login: React.FC = () => {
       <div className="w-full md:w-1/2 p-8 flex items-center justify-center">
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl font-bold">Login to RecoAI</CardTitle>
+            <CardTitle className="text-2xl font-bold">Login to CortexCart</CardTitle>
             <CardDescription>
               Enter your email and password to access your dashboard
             </CardDescription>

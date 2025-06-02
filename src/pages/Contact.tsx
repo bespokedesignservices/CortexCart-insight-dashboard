@@ -1,4 +1,3 @@
-
 import React from "react";
 import LandingNavbar from "@/components/LandingNavbar";
 import LandingFooter from "@/components/LandingFooter";
@@ -26,7 +25,7 @@ const Contact: React.FC = () => {
               Get in <span className="gradient-text">Touch</span>
             </h1>
             <p className="text-lg text-recoai-gray mb-12">
-              Have questions or want to learn more about RecoAI? We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.
+              Have questions or want to learn more about CortexCart? We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.
             </p>
             
             <div className="grid md:grid-cols-2 gap-12 mb-12">
@@ -102,13 +101,13 @@ const Contact: React.FC = () => {
                 <div className="bg-recoai-lightGray p-6 rounded-xl">
                   <h2 className="text-xl font-bold mb-4">Sales Inquiries</h2>
                   <p className="text-recoai-gray mb-4">
-                    Interested in RecoAI for your business? Our sales team is ready to answer your questions and help you find the right plan.
+                    Interested in CortexCart for your business? Our sales team is ready to answer your questions and help you find the right plan.
                   </p>
                   <div className="flex items-center">
                     <svg className="h-5 w-5 text-recoai-purple mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <span className="text-recoai-gray">sales@recoai.com</span>
+                    <span className="text-recoai-gray">sales@cortexcart.com</span>
                   </div>
                 </div>
               </div>

@@ -15,7 +15,7 @@ const Integrations: React.FC = () => {
     {
       name: "WooCommerce",
       logo: "https://woocommerce.com/wp-content/themes/woo/images/logo-woocommerce.svg",
-      description: "Our WordPress plugin makes it easy to add RecoAI to your WooCommerce store with just a few clicks.",
+      description: "Our WordPress plugin makes it easy to add CortexCart to your WooCommerce store with just a few clicks.",
     },
     {
       name: "Magento",
@@ -25,7 +25,7 @@ const Integrations: React.FC = () => {
     {
       name: "BigCommerce",
       logo: "https://www.bigcommerce.com/assets/images/logos/bigcommerce-logo-dark.svg",
-      description: "Connect your BigCommerce store to RecoAI with our official app available on the BigCommerce App Marketplace.",
+      description: "Connect your BigCommerce store to CortexCart with our official app available on the BigCommerce App Marketplace.",
     },
     {
       name: "PrestaShop",
@@ -42,19 +42,19 @@ const Integrations: React.FC = () => {
   const tools = [
     {
       name: "Google Analytics",
-      description: "Combine RecoAI insights with your Google Analytics data for comprehensive reporting.",
+      description: "Combine CortexCart insights with your Google Analytics data for comprehensive reporting.",
     },
     {
       name: "Klaviyo",
-      description: "Use RecoAI customer segments and product recommendations in your Klaviyo email campaigns.",
+      description: "Use CortexCart customer segments and product recommendations in your Klaviyo email campaigns.",
     },
     {
       name: "Mailchimp",
-      description: "Enhance your Mailchimp emails with personalized product recommendations from RecoAI.",
+      description: "Enhance your Mailchimp emails with personalized product recommendations from CortexCart.",
     },
     {
       name: "Facebook Ads",
-      description: "Target your Facebook ads more effectively using RecoAI customer segments and insights.",
+      description: "Target your Facebook ads more effectively using CortexCart customer segments and insights.",
     },
   ];
 
@@ -68,7 +68,7 @@ const Integrations: React.FC = () => {
               Powerful <span className="gradient-text">Integrations</span>
             </h1>
             <p className="text-lg text-recoai-gray mb-16">
-              RecoAI seamlessly integrates with your favorite e-commerce platforms and marketing tools,
+              CortexCart seamlessly integrates with your favorite e-commerce platforms and marketing tools,
               making it easy to enhance your store with AI-powered recommendations and analytics.
             </p>
             
@@ -102,7 +102,7 @@ const Integrations: React.FC = () => {
             <div className="bg-recoai-lightGray p-8 rounded-xl text-center">
               <h2 className="text-2xl font-bold mb-4">Need a Custom Integration?</h2>
               <p className="text-recoai-gray mb-6">
-                We offer a flexible REST API that allows you to integrate RecoAI with any platform or tool.
+                We offer a flexible REST API that allows you to integrate CortexCart with any platform or tool.
                 Our team can also help develop custom integrations for your specific needs.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">

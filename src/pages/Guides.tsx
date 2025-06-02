@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import LandingNavbar from "@/components/LandingNavbar";
 import LandingFooter from "@/components/LandingFooter";
@@ -24,7 +23,7 @@ const Guides: React.FC = () => {
           duration: "5 minutes",
           difficulty: "Beginner",
           steps: [
-            "Sign up for your RecoAI account at recoai.com",
+            "Sign up for your CortexCart account at cortexcart.com",
             "Verify your email address",
             "Complete your profile information",
             "Choose your subscription plan",
@@ -62,7 +61,7 @@ const Guides: React.FC = () => {
             "Select 'Shopify' from the platform list",
             "Enter your Shopify store URL",
             "Generate and copy your API credentials from Shopify Admin",
-            "Paste credentials in RecoAI and test connection",
+            "Paste credentials in CortexCart and test connection",
             "Configure data sync preferences",
             "Verify product and order data is flowing correctly"
           ]
@@ -73,10 +72,10 @@ const Guides: React.FC = () => {
           duration: "20 minutes",
           difficulty: "Intermediate",
           steps: [
-            "Download the RecoAI WordPress plugin",
+            "Download the CortexCart WordPress plugin",
             "Upload and activate in your WordPress admin",
-            "Navigate to WooCommerce → RecoAI Settings",
-            "Enter your RecoAI API key from your dashboard",
+            "Navigate to WooCommerce → CortexCart Settings",
+            "Enter your CortexCart API key from your dashboard",
             "Configure tracking preferences",
             "Test the connection and verify data sync"
           ]
@@ -111,7 +110,7 @@ const Guides: React.FC = () => {
             "Setting up custom conversion goals",
             "Creating customer segments for targeted analysis",
             "Utilizing cohort analysis for retention insights",
-            "Implementing A/B testing with RecoAI data",
+            "Implementing A/B testing with CortexCart data",
             "Exporting data for external analysis"
           ]
         }
@@ -208,7 +207,7 @@ const Guides: React.FC = () => {
                 <span className="gradient-text">Guides</span> & Documentation
               </h1>
               <p className="text-lg text-recoai-gray max-w-2xl mx-auto">
-                Step-by-step instructions to help you get the most out of RecoAI. From basic setup to advanced features.
+                Step-by-step instructions to help you get the most out of CortexCart. From basic setup to advanced features.
               </p>
             </div>
 

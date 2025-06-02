@@ -1,4 +1,3 @@
-
 import React from "react";
 import LandingNavbar from "@/components/LandingNavbar";
 import LandingFooter from "@/components/LandingFooter";
@@ -11,7 +10,7 @@ const About: React.FC = () => {
       name: "Sarah Johnson",
       title: "CEO & Co-Founder",
       image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=300&h=300",
-      bio: "Former Head of E-Commerce at a Fortune 500 retailer, Sarah founded RecoAI to solve the challenges she experienced firsthand with understanding customer behavior and personalizing shopping experiences.",
+      bio: "Former Head of E-Commerce at a Fortune 500 retailer, Sarah founded CortexCart to solve the challenges she experienced firsthand with understanding customer behavior and personalizing shopping experiences.",
     },
     {
       name: "Michael Chen",
@@ -29,7 +28,7 @@ const About: React.FC = () => {
       name: "David Kim",
       title: "Head of Customer Success",
       image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=300&h=300",
-      bio: "With a background in e-commerce consulting, David ensures our customers get maximum value from RecoAI through personalized onboarding, training, and ongoing support.",
+      bio: "With a background in e-commerce consulting, David ensures our customers get maximum value from CortexCart through personalized onboarding, training, and ongoing support.",
     },
   ];
 
@@ -59,7 +58,7 @@ const About: React.FC = () => {
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              About <span className="gradient-text">RecoAI</span>
+              About <span className="gradient-text">CortexCart</span>
             </h1>
             <p className="text-lg text-recoai-gray mb-8">
               We're on a mission to democratize AI-powered analytics and personalization for e-commerce stores of all sizes.
@@ -69,13 +68,13 @@ const About: React.FC = () => {
               <h2 className="text-2xl font-bold mb-6">Our Story</h2>
               <div className="prose max-w-none text-recoai-gray">
                 <p className="mb-4">
-                  Founded in 2022 by e-commerce veterans Sarah Johnson and Michael Chen, RecoAI was born from a shared frustration: powerful customer analytics and personalization tools were too complex and expensive for most online stores.
+                  Founded in 2022 by e-commerce veterans Sarah Johnson and Michael Chen, CortexCart was born from a shared frustration: powerful customer analytics and personalization tools were too complex and expensive for most online stores.
                 </p>
                 <p className="mb-4">
                   Having worked with enterprise retailers, Sarah and Michael saw firsthand how AI-driven insights and recommendations could transform businesses. They also recognized that most solutions required dedicated data teams and six-figure budgets—putting them out of reach for the vast majority of e-commerce entrepreneurs.
                 </p>
                 <p className="mb-4">
-                  RecoAI was created to change that. By combining powerful AI technology with intuitive, no-code interfaces, we've made enterprise-grade analytics and personalization accessible to online stores of all sizes.
+                  CortexCart was created to change that. By combining powerful AI technology with intuitive, no-code interfaces, we've made enterprise-grade analytics and personalization accessible to online stores of all sizes.
                 </p>
                 <p>
                   Today, we serve thousands of e-commerce businesses worldwide, helping them understand their customers better and create more personalized shopping experiences that drive growth.

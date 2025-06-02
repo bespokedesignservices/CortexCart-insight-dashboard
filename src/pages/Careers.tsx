@@ -49,7 +49,7 @@ const Careers: React.FC = () => {
             </div>
             
             <div className="mb-16">
-              <h2 className="text-2xl font-bold mb-8">Why Work at RecoAI?</h2>
+              <h2 className="text-2xl font-bold mb-8">Why Work at CortexCart?</h2>
               <div className="grid md:grid-cols-2 gap-6">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
@@ -64,7 +64,7 @@ const Careers: React.FC = () => {
               <h2 className="text-2xl font-bold mb-8">Our Culture</h2>
               <div className="prose max-w-none text-recoai-gray">
                 <p className="mb-4">
-                  At RecoAI, we're building a culture based on trust, ownership, and impact. We believe in giving people the autonomy to do their best work, while providing the support and resources they need to succeed.
+                  At CortexCart, we're building a culture based on trust, ownership, and impact. We believe in giving people the autonomy to do their best work, while providing the support and resources they need to succeed.
                 </p>
                 <p className="mb-4">
                   We're a diverse team united by a shared mission: to make powerful AI technology accessible to e-commerce businesses of all sizes. We value different perspectives and believe that the best ideas can come from anyone, regardless of their role or background.

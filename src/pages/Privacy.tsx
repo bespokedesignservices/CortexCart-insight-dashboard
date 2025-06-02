@@ -18,7 +18,7 @@ const Privacy: React.FC = () => {
               
               <h2 className="text-2xl font-bold mt-8 mb-4">Introduction</h2>
               <p className="mb-4">
-                RecoAI ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our website and services.
+                CortexCart ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our website and services.
               </p>
               <p className="mb-4">
                 Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access our services.
@@ -108,7 +108,7 @@ const Privacy: React.FC = () => {
                 If you have any questions about this privacy policy or our privacy practices, please contact us at:
               </p>
               <p className="mb-4">
-                Email: privacy@recoai.com<br />
+                Email: privacy@cortexcart.com<br />
                 Address: 123 AI Street, San Francisco, CA 94103, United States
               </p>
             </div>
