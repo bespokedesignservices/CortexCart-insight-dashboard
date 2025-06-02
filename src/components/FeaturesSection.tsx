@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Brain, LineChart, ShoppingCart, Users, Zap, Gauge } from "lucide-react";
+import { Brain, LineChart, ShoppingCart, Users, Zap, Gauge, Share2 } from "lucide-react";
 
 interface FeatureCardProps {
   icon: React.ReactNode;
@@ -10,12 +10,12 @@ interface FeatureCardProps {
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description }) => {
   return (
-    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md hover:border-recoai-purple/20 h-full">
-      <div className="h-12 w-12 rounded-lg bg-recoai-purple/10 text-recoai-purple flex items-center justify-center mb-4">
+    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md hover:border-cortexcart-purple/20 h-full">
+      <div className="h-12 w-12 rounded-lg bg-cortexcart-purple/10 text-cortexcart-purple flex items-center justify-center mb-4">
         {icon}
       </div>
-      <h3 className="text-xl font-bold mb-3 text-recoai-darkGray">{title}</h3>
-      <p className="text-recoai-gray">{description}</p>
+      <h3 className="text-xl font-bold mb-3 text-cortexcart-darkGray">{title}</h3>
+      <p className="text-cortexcart-gray">{description}</p>
     </div>
   );
 };
@@ -48,6 +48,11 @@ const FeaturesSection: React.FC = () => {
       description: "Integrate with your existing e-commerce platform in minutes with our simple copy-paste widget."
     },
     {
+      icon: <Share2 size={24} />,
+      title: "Social Media Post Management",
+      description: "Design engaging posts and get AI-powered recommendations for best practices across Twitter, Facebook, LinkedIn, Instagram, Snapchat and more."
+    },
+    {
       icon: <Gauge size={24} />,
       title: "Performance Metrics",
       description: "Track key performance indicators like conversion rates, average order value, and customer lifetime value."
@@ -61,7 +66,7 @@ const FeaturesSection: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Powerful Features for <span className="gradient-text">Growing Stores</span>
           </h2>
-          <p className="text-lg text-recoai-gray max-w-2xl mx-auto">
+          <p className="text-lg text-cortexcart-gray max-w-2xl mx-auto">
             Our suite of tools gives you everything you need to understand your customers and grow your business.
           </p>
         </div>
