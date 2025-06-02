@@ -4,58 +4,78 @@ import LandingNavbar from "@/components/LandingNavbar";
 import LandingFooter from "@/components/LandingFooter";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { platformDetails } from "@/utils/platformDetails";
 
 const Integrations: React.FC = () => {
   const platforms = [
     {
-      name: "Shopify",
-      logo: "https://cdn.shopify.com/s/files/1/0277/3365/8563/files/shopify-logo.svg",
-      description: "Seamless integration with Shopify stores. Install our app from the Shopify App Store and be up and running in minutes.",
+      id: "shopify",
+      ...platformDetails.shopify
     },
     {
-      name: "WooCommerce",
-      logo: "https://woocommerce.com/wp-content/themes/woo/images/logo-woocommerce.svg",
-      description: "Our WordPress plugin makes it easy to add CortexCart to your WooCommerce store with just a few clicks.",
+      id: "woocommerce",
+      ...platformDetails.woocommerce
     },
     {
-      name: "Magento",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/5/5c/Magento_logo.svg",
-      description: "Comprehensive integration with both Magento 1 and 2, supporting all features of the platform.",
+      id: "magento",
+      ...platformDetails.magento
     },
     {
-      name: "BigCommerce",
-      logo: "https://www.bigcommerce.com/assets/images/logos/bigcommerce-logo-dark.svg",
-      description: "Connect your BigCommerce store to CortexCart with our official app available on the BigCommerce App Marketplace.",
+      id: "bigcommerce",
+      ...platformDetails.bigcommerce
     },
     {
-      name: "PrestaShop",
-      logo: "https://www.prestashop.com/sites/all/themes/prestashop/images/logos/logo-prestashop-colors.svg",
-      description: "Our PrestaShop module allows for easy setup and configuration, with all features fully supported.",
+      id: "prestashop",
+      ...platformDetails.prestashop
     },
     {
-      name: "Salesforce Commerce Cloud",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg",
-      description: "Enterprise-grade integration with Salesforce Commerce Cloud, with full support for multi-site setups.",
+      id: "opencast",
+      name: "OpenCart",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/0/0c/OpenCart_logo.png",
+      description: "Integrate seamlessly with OpenCart stores using our comprehensive module that supports all OpenCart features."
     },
+    {
+      id: "custom",
+      ...platformDetails.custom
+    }
   ];
 
   const tools = [
     {
       name: "Google Analytics",
-      description: "Combine CortexCart insights with your Google Analytics data for comprehensive reporting.",
+      logo: "https://www.google.com/analytics/static/53c5c7d1/svg/google-analytics-logo.svg",
+      description: "Combine CortexCart insights with your Google Analytics data for comprehensive reporting."
     },
     {
       name: "Klaviyo",
-      description: "Use CortexCart customer segments and product recommendations in your Klaviyo email campaigns.",
+      logo: "https://cdn.worldvectorlogo.com/logos/klaviyo.svg",
+      description: "Use CortexCart customer segments and product recommendations in your Klaviyo email campaigns."
     },
     {
       name: "Mailchimp",
-      description: "Enhance your Mailchimp emails with personalized product recommendations from CortexCart.",
+      logo: "https://cdn.worldvectorlogo.com/logos/mailchimp-freddie.svg",
+      description: "Enhance your Mailchimp emails with personalized product recommendations from CortexCart."
     },
     {
       name: "Facebook Ads",
-      description: "Target your Facebook ads more effectively using CortexCart customer segments and insights.",
+      logo: "https://cdn.worldvectorlogo.com/logos/facebook-icon-1.svg",
+      description: "Target your Facebook ads more effectively using CortexCart customer segments and insights."
     },
+    {
+      name: "X (Twitter)",
+      logo: "https://cdn.worldvectorlogo.com/logos/twitter-6.svg",
+      description: "Leverage CortexCart analytics to optimize your Twitter advertising campaigns and audience targeting."
+    },
+    {
+      name: "Snapchat Ads",
+      logo: "https://cdn.worldvectorlogo.com/logos/snapchat-2.svg",
+      description: "Use CortexCart customer insights to create more effective Snapchat ad campaigns and reach younger demographics."
+    },
+    {
+      name: "LinkedIn Ads",
+      logo: "https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg",
+      description: "Target B2B audiences more precisely with CortexCart's professional customer segments and behavior data."
+    }
   ];
 
   return (
@@ -67,7 +87,7 @@ const Integrations: React.FC = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Powerful <span className="gradient-text">Integrations</span>
             </h1>
-            <p className="text-lg text-recoai-gray mb-16">
+            <p className="text-lg text-cortexcart-gray mb-16">
               CortexCart seamlessly integrates with your favorite e-commerce platforms and marketing tools,
               making it easy to enhance your store with AI-powered recommendations and analytics.
             </p>
@@ -77,14 +97,20 @@ const Integrations: React.FC = () => {
               {platforms.map((platform, index) => (
                 <div key={index} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                   <div className="h-12 mb-4 flex items-center">
-                    <img
-                      src={platform.logo}
-                      alt={`${platform.name} logo`}
-                      className="h-10 max-w-[180px] object-contain"
-                    />
+                    {platform.logo ? (
+                      <img
+                        src={platform.logo}
+                        alt={`${platform.name} logo`}
+                        className="h-10 max-w-[180px] object-contain"
+                      />
+                    ) : (
+                      <div className="h-10 w-10 bg-gray-200 rounded flex items-center justify-center">
+                        <span className="text-xs text-gray-500">Logo</span>
+                      </div>
+                    )}
                   </div>
                   <h3 className="text-xl font-semibold mb-2">{platform.name}</h3>
-                  <p className="text-recoai-gray">{platform.description}</p>
+                  <p className="text-cortexcart-gray">{platform.description}</p>
                 </div>
               ))}
             </div>
@@ -93,23 +119,36 @@ const Integrations: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-6 mb-16">
               {tools.map((tool, index) => (
                 <div key={index} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                  <div className="h-12 mb-4 flex items-center">
+                    {tool.logo ? (
+                      <img
+                        src={tool.logo}
+                        alt={`${tool.name} logo`}
+                        className="h-10 max-w-[180px] object-contain"
+                      />
+                    ) : (
+                      <div className="h-10 w-10 bg-gray-200 rounded flex items-center justify-center">
+                        <span className="text-xs text-gray-500">Logo</span>
+                      </div>
+                    )}
+                  </div>
                   <h3 className="text-xl font-semibold mb-2">{tool.name}</h3>
-                  <p className="text-recoai-gray">{tool.description}</p>
+                  <p className="text-cortexcart-gray">{tool.description}</p>
                 </div>
               ))}
             </div>
             
-            <div className="bg-recoai-lightGray p-8 rounded-xl text-center">
+            <div className="bg-cortexcart-lightGray p-8 rounded-xl text-center">
               <h2 className="text-2xl font-bold mb-4">Need a Custom Integration?</h2>
-              <p className="text-recoai-gray mb-6">
+              <p className="text-cortexcart-gray mb-6">
                 We offer a flexible REST API that allows you to integrate CortexCart with any platform or tool.
                 Our team can also help develop custom integrations for your specific needs.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Button asChild size="lg" className="bg-recoai-purple hover:bg-recoai-purple/90 text-white">
+                <Button asChild size="lg" className="bg-cortexcart-purple hover:bg-cortexcart-purple/90 text-white">
                   <Link to="/register">Start Free Trial</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-recoai-purple text-recoai-purple hover:bg-recoai-purple/10">
+                <Button asChild variant="outline" size="lg" className="border-cortexcart-purple text-cortexcart-purple hover:bg-cortexcart-purple/10">
                   <Link to="/contact">Contact Sales</Link>
                 </Button>
               </div>

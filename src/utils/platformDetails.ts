@@ -1,5 +1,5 @@
 
-import { LucideIcon, Code, ShoppingCart, ShoppingBag, Store, Package, Building } from "lucide-react";
+import { LucideIcon, Code, ShoppingCart, ShoppingBag, Store, Package, Building, Globe } from "lucide-react";
 
 export interface PlatformDetail {
   name: string;
@@ -57,6 +57,15 @@ export const platformDetails: Record<string, PlatformDetail> = {
     instructions: "Add this code to the header.tpl file in your theme folder.",
     settingsUrl: "https://yourstore.com/admin-dev/index.php/configure/advanced/performance"
   },
+  opencart: {
+    name: "OpenCart",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/0/0c/OpenCart_logo.png",
+    color: "#0C9EDB",
+    icon: Globe,
+    description: "Integrate with your OpenCart e-commerce platform.",
+    instructions: "Add this code to the header.tpl file in your theme's template folder.",
+    settingsUrl: "https://yourstore.com/admin/index.php?route=setting/setting"
+  },
   custom: {
     name: "Custom Platform",
     logo: null,
@@ -66,4 +75,3 @@ export const platformDetails: Record<string, PlatformDetail> = {
     instructions: "Add this code to your website's HTML, just before the closing </head> tag.",
   }
 };
-
