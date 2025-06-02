@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import LandingNavbar from "@/components/LandingNavbar";
 import LandingFooter from "@/components/LandingFooter";
+import ChatBot from "@/components/ChatBot";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -152,6 +153,7 @@ const Contact: React.FC = () => {
         </div>
       </main>
       <LandingFooter />
+      <ChatBot />
     </div>
   );
 };
