@@ -1,12 +1,16 @@
-import React from "react";
+
+import React, { useState } from "react";
 import LandingNavbar from "@/components/LandingNavbar";
 import LandingFooter from "@/components/LandingFooter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "@/hooks/use-toast";
 
 const Contact: React.FC = () => {
+  const [salesCallbackAgreed, setSalesCallbackAgreed] = useState(false);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
@@ -52,6 +56,27 @@ const Contact: React.FC = () => {
                     <Input id="email" type="email" placeholder="john@example.com" required />
                   </div>
                   <div className="space-y-2">
+                    <label htmlFor="telephone" className="text-sm font-medium">
+                      Telephone Number
+                    </label>
+                    <Input id="telephone" type="tel" placeholder="+44 1234 567890" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center space-x-2">
+                      <Checkbox 
+                        id="sales-callback" 
+                        checked={salesCallbackAgreed}
+                        onCheckedChange={(checked) => setSalesCallbackAgreed(checked as boolean)}
+                      />
+                      <label 
+                        htmlFor="sales-callback" 
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        I agree to receive a sales callback
+                      </label>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
                     <label htmlFor="company" className="text-sm font-medium">
                       Company
                     </label>
@@ -81,7 +106,7 @@ const Contact: React.FC = () => {
                   <div className="space-y-4">
                     <div>
                       <h3 className="text-sm font-medium mb-1">Email</h3>
-                      <p className="text-recoai-gray">hello@recoai.com</p>
+                      <p className="text-recoai-gray">empowerment@cortexcart.com</p>
                     </div>
                     <div>
                       <h3 className="text-sm font-medium mb-1">Phone</h3>
@@ -90,9 +115,10 @@ const Contact: React.FC = () => {
                     <div>
                       <h3 className="text-sm font-medium mb-1">Address</h3>
                       <p className="text-recoai-gray">
-                        123 AI Street<br />
-                        San Francisco, CA 94103<br />
-                        United States
+                        CortexCart<br />
+                        Unit 107423, PO Box 7169<br />
+                        Poole, BH15 9EL<br />
+                        United Kingdom
                       </p>
                     </div>
                   </div>
