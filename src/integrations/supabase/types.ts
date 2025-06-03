@@ -48,6 +48,39 @@ export type Database = {
         }
         Relationships: []
       }
+      tracking_events: {
+        Row: {
+          event_data: Json
+          event_type: string
+          id: string
+          ip_address: unknown | null
+          session_id: string | null
+          store_id: string
+          timestamp: string
+          user_agent: string | null
+        }
+        Insert: {
+          event_data?: Json
+          event_type: string
+          id?: string
+          ip_address?: unknown | null
+          session_id?: string | null
+          store_id: string
+          timestamp?: string
+          user_agent?: string | null
+        }
+        Update: {
+          event_data?: Json
+          event_type?: string
+          id?: string
+          ip_address?: unknown | null
+          session_id?: string | null
+          store_id?: string
+          timestamp?: string
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

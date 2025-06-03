@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { supabase } from "@/integrations/supabase/client";
 
 // This component doesn't render anything visible but sets up the tracking API endpoint
 const TrackerAPI: React.FC = () => {
@@ -24,30 +23,41 @@ const TrackerAPI: React.FC = () => {
     };
   }, []);
   
-  // Handler for tracking requests
+  // Handler for tracking requests - now forwards to Supabase Edge Function
   const handleTrackingRequest = async (body: any) => {
     try {
       if (typeof body === 'string') {
         const data = JSON.parse(body);
         console.log('🔍 Received tracking data:', data);
         
-        // Process tracking data
+        // Forward to Supabase Edge Function
+        const response = await fetch(`${window.location.origin}/functions/v1/track`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        // Also trigger local event for real-time dashboard updates
         const { storeId, event, data: eventData } = data;
-        
-        // Store event in app's state for real-time dashboard updates
         window.dispatchEvent(new CustomEvent('cortexcart-event', { 
           detail: { storeId, event, data: eventData, timestamp: new Date() }
         }));
         
-        // In a real implementation, we'd save this to Supabase
-        // For now, we'll simulate a successful response
-        return Promise.resolve(new Response(JSON.stringify({ 
-          success: true, 
-          message: 'Event received' 
-        }), {
-          status: 200,
-          headers: { 'Content-Type': 'application/json' }
-        }));
+        if (response.ok) {
+          const result = await response.json();
+          return new Response(JSON.stringify(result), {
+            status: response.status,
+            headers: { 'Content-Type': 'application/json' }
+          });
+        } else {
+          const error = await response.json();
+          return new Response(JSON.stringify(error), {
+            status: response.status,
+            headers: { 'Content-Type': 'application/json' }
+          });
+        }
       }
     } catch (error) {
       console.error('Error processing tracking request:', error);

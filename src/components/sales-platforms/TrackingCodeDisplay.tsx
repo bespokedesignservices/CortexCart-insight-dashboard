@@ -21,7 +21,7 @@ const TrackingCodeDisplay = ({ platform, storeId, selectedPlatformId }: Tracking
   (function(r,e,c,o,a,i){
     r.CortexCartTracker = { 
       storeId: "${storeIdValue}",
-      endpoint: "${window.location.origin}/api/track",
+      endpoint: "${window.location.origin}/functions/v1/track",
       platform: "${selectedPlatformId}"
     };
     r.cctk = r.cctk || function() {
@@ -36,7 +36,8 @@ const TrackingCodeDisplay = ({ platform, storeId, selectedPlatformId }: Tracking
           storeId: r.CortexCartTracker.storeId,
           platform: r.CortexCartTracker.platform,
           event: arguments[1],
-          data: arguments[2] || {}
+          data: arguments[2] || {},
+          sessionId: r.CortexCartTracker.sessionId || generateSessionId()
         };
         
         fetch(r.CortexCartTracker.endpoint, {
@@ -47,6 +48,14 @@ const TrackingCodeDisplay = ({ platform, storeId, selectedPlatformId }: Tracking
         }).catch(console.error);
       }
     };
+    
+    // Generate session ID
+    function generateSessionId() {
+      return 'sess_' + Math.random().toString(36).substring(2, 15) + 
+             Math.random().toString(36).substring(2, 15);
+    }
+    
+    r.CortexCartTracker.sessionId = generateSessionId();
     
     // Auto-track page views
     cctk('event', 'page_view', { 
