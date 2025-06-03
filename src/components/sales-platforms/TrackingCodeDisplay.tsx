@@ -19,27 +19,27 @@ const TrackingCodeDisplay = ({ platform, storeId, selectedPlatformId }: Tracking
     const storeIdValue = storeId || "your-store-id";
     return `<script>
   (function(r,e,c,o,a,i){
-    r.RecoAITracker = { 
+    r.CortexCartTracker = { 
       storeId: "${storeIdValue}",
       endpoint: "${window.location.origin}/api/track",
       platform: "${selectedPlatformId}"
     };
-    r.rctk = r.rctk || function() {
-      (r.rctk.q = r.rctk.q || []).push(arguments);
+    r.cctk = r.cctk || function() {
+      (r.cctk.q = r.cctk.q || []).push(arguments);
       
       // Log the event to console for debugging
-      console.log('RecoAI Event:', arguments);
+      console.log('CortexCart Event:', arguments);
       
       // Send data to tracking endpoint
       if (arguments[0] === 'event') {
         const payload = {
-          storeId: r.RecoAITracker.storeId,
-          platform: r.RecoAITracker.platform,
+          storeId: r.CortexCartTracker.storeId,
+          platform: r.CortexCartTracker.platform,
           event: arguments[1],
           data: arguments[2] || {}
         };
         
-        fetch(r.RecoAITracker.endpoint, {
+        fetch(r.CortexCartTracker.endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
@@ -49,7 +49,7 @@ const TrackingCodeDisplay = ({ platform, storeId, selectedPlatformId }: Tracking
     };
     
     // Auto-track page views
-    rctk('event', 'page_view', { 
+    cctk('event', 'page_view', { 
       url: window.location.href,
       title: document.title,
       referrer: document.referrer
@@ -66,11 +66,11 @@ const TrackingCodeDisplay = ({ platform, storeId, selectedPlatformId }: Tracking
         default: '.product-title, .product-name, [data-product-title]'
       };
       
-      const selector = productSelectors[r.RecoAITracker.platform] || productSelectors.default;
+      const selector = productSelectors[r.CortexCartTracker.platform] || productSelectors.default;
       const productElements = document.querySelectorAll(selector);
       
       if (productElements.length > 0) {
-        rctk('event', 'product_view', {
+        cctk('event', 'product_view', {
           title: productElements[0].textContent.trim(),
           url: window.location.href
         });
@@ -81,7 +81,7 @@ const TrackingCodeDisplay = ({ platform, storeId, selectedPlatformId }: Tracking
     document.addEventListener('click', function(e) {
       const target = e.target.closest('a, button') || e.target;
       if (target.tagName) {
-        rctk('event', 'click', {
+        cctk('event', 'click', {
           element: target.tagName.toLowerCase(),
           text: target.innerText,
           path: target.getAttribute('href') || '',

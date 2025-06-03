@@ -209,10 +209,10 @@ export const useTrackingData = () => {
       }
     };
     
-    window.addEventListener('recoai-event', handleTrackingEvent);
+    window.addEventListener('cortexcart-event', handleTrackingEvent);
     
     return () => {
-      window.removeEventListener('recoai-event', handleTrackingEvent);
+      window.removeEventListener('cortexcart-event', handleTrackingEvent);
     };
   }, [toast, hasData]);
 

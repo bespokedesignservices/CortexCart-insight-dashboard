@@ -1,7 +1,7 @@
 
-// RecoAI Tracker Core
+// CortexCart Tracker Core
 (function() {
-  console.log('RecoAI Tracker loaded successfully');
+  console.log('CortexCart Tracker loaded successfully');
   
   // Extract visitor data
   const visitorData = {
@@ -22,13 +22,13 @@
   }
   
   // Send visitor info immediately
-  if (window.rctk) {
-    window.rctk('event', 'visitor_info', visitorData);
+  if (window.cctk) {
+    window.cctk('event', 'visitor_info', visitorData);
   }
   
   // Track page views
   function trackPageView() {
-    window.rctk('event', 'page_view', {
+    window.cctk('event', 'page_view', {
       url: window.location.href,
       title: document.title,
       referrer: document.referrer || 'direct',
@@ -65,7 +65,7 @@
           if (imgEl) productImage = imgEl.getAttribute('src') || '';
         }
         
-        window.rctk('event', 'add_to_cart', {
+        window.cctk('event', 'add_to_cart', {
           product_id: productId || 'unknown_id',
           product: productTitle || 'Unknown Product',
           price: productPrice || 'Unknown Price',
@@ -86,7 +86,7 @@
     
     checkoutButtons.forEach(button => {
       button.addEventListener('click', function(e) {
-        window.rctk('event', 'begin_checkout', {
+        window.cctk('event', 'begin_checkout', {
           timestamp: new Date().toISOString(),
           url: window.location.href
         });
@@ -101,7 +101,7 @@
            form.querySelector('input[name*="card"]'))) {
         
         form.addEventListener('submit', function(e) {
-          window.rctk('event', 'purchase', {
+          window.cctk('event', 'purchase', {
             timestamp: new Date().toISOString(),
             url: window.location.href
           });
@@ -125,7 +125,7 @@
         form.addEventListener('submit', function() {
           const promoCode = input.value;
           if (promoCode) {
-            window.rctk('event', 'apply_promo', {
+            window.cctk('event', 'apply_promo', {
               promo_code: promoCode,
               timestamp: new Date().toISOString(),
               url: window.location.href
@@ -157,7 +157,7 @@
         };
       });
       
-      window.rctk('event', 'product_impressions', {
+      window.cctk('event', 'product_impressions', {
         products,
         timestamp: new Date().toISOString(),
         url: window.location.href
@@ -169,13 +169,13 @@
   function setupCartAbandonmentTracking() {
     if (document.querySelector('.cart, .shopping-cart, #cart, [data-cart]')) {
       // If we're on a cart page, record the cart state
-      localStorage.setItem('recoai_cart_timestamp', new Date().toISOString());
+      localStorage.setItem('cortexcart_cart_timestamp', new Date().toISOString());
       
       // Track when user leaves the cart page without checking out
       window.addEventListener('beforeunload', function() {
-        const checkoutStarted = sessionStorage.getItem('recoai_checkout_started');
+        const checkoutStarted = sessionStorage.getItem('cortexcart_checkout_started');
         if (!checkoutStarted) {
-          window.rctk('event', 'cart_abandonment', {
+          window.cctk('event', 'cart_abandonment', {
             timestamp: new Date().toISOString(),
             url: window.location.href
           });
@@ -191,7 +191,7 @@
     
     checkoutButtons.forEach(button => {
       button.addEventListener('click', function() {
-        sessionStorage.setItem('recoai_checkout_started', 'true');
+        sessionStorage.setItem('cortexcart_checkout_started', 'true');
       });
     });
   }
@@ -202,7 +202,7 @@
     document.addEventListener('click', function(e) {
       const target = e.target.closest('a, button, [role="button"], .btn') || e.target;
       if (target.tagName) {
-        window.rctk('event', 'user_interaction', {
+        window.cctk('event', 'user_interaction', {
           element_type: target.tagName.toLowerCase(),
           element_text: target.innerText ? target.innerText.substring(0, 50) : '',
           element_id: target.id || '',
@@ -216,7 +216,7 @@
     // Track form submissions
     document.addEventListener('submit', function(e) {
       const form = e.target;
-      window.rctk('event', 'form_submission', {
+      window.cctk('event', 'form_submission', {
         form_id: form.id || '',
         form_name: form.name || '',
         form_action: form.action || '',
@@ -240,7 +240,7 @@
     let pageLoadTime = new Date();
     window.addEventListener('beforeunload', function() {
       const timeSpentMs = new Date() - pageLoadTime;
-      window.rctk('event', 'page_exit', {
+      window.cctk('event', 'page_exit', {
         time_spent_seconds: Math.round(timeSpentMs / 1000),
         url: window.location.href,
         timestamp: new Date().toISOString()

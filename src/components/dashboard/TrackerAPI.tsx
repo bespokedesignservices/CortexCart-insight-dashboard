@@ -35,7 +35,7 @@ const TrackerAPI: React.FC = () => {
         const { storeId, event, data: eventData } = data;
         
         // Store event in app's state for real-time dashboard updates
-        window.dispatchEvent(new CustomEvent('recoai-event', { 
+        window.dispatchEvent(new CustomEvent('cortexcart-event', { 
           detail: { storeId, event, data: eventData, timestamp: new Date() }
         }));
         

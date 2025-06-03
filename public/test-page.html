@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RecoAI Test Store</title>
+  <title>CortexCart Test Store</title>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
@@ -230,28 +230,28 @@
     });
   </script>
   
-  <!-- RecoAI Tracking Widget -->
+  <!-- CortexCart Tracking Widget -->
   <script>
     (function(r,e,c,o,a,i){
-      r.RecoAITracker = { 
+      r.CortexCartTracker = { 
         storeId: "demo-store-123",
-        endpoint: "/api/track"
+        endpoint: window.location.origin + "/api/track"
       };
-      r.rctk = r.rctk || function() {
-        (r.rctk.q = r.rctk.q || []).push(arguments);
+      r.cctk = r.cctk || function() {
+        (r.cctk.q = r.cctk.q || []).push(arguments);
         
         // Log the event to console for debugging
-        console.log('RecoAI Event:', arguments);
+        console.log('CortexCart Event:', arguments);
         
         // Send data to tracking endpoint
         if (arguments[0] === 'event') {
           const payload = {
-            storeId: r.RecoAITracker.storeId,
+            storeId: r.CortexCartTracker.storeId,
             event: arguments[1],
             data: arguments[2] || {}
           };
           
-          fetch(r.RecoAITracker.endpoint, {
+          fetch(r.CortexCartTracker.endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
@@ -261,7 +261,7 @@
       };
       
       // Auto-track page views
-      rctk('event', 'page_view', { 
+      cctk('event', 'page_view', { 
         url: window.location.href,
         title: document.title,
         referrer: document.referrer
@@ -271,7 +271,7 @@
       document.addEventListener('click', function(e) {
         const target = e.target.closest('a, button') || e.target;
         if (target.tagName) {
-          rctk('event', 'click', {
+          cctk('event', 'click', {
             element: target.tagName.toLowerCase(),
             text: target.innerText,
             path: target.getAttribute('href') || '',
@@ -283,7 +283,7 @@
       // Load the actual tracker script
       a = e.createElement(c);
       a.async = 1;
-      a.src = o;
+      a.src = window.location.origin + o;
       i = e.getElementsByTagName(c)[0];
       i.parentNode.insertBefore(a, i);
     })(window, document, "script", "/tracker.js");
