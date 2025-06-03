@@ -44,7 +44,7 @@
     ```bash
     git clone [https://github.com/bespokedesignservices/cortexcart-insight-dashboard.git](https://github.com/bespokedesignservices/cortexcart-insight-dashboard.git)
     ```
-2.  **Sign up for a CortexCart account:** Visit [test beta link](https://preview--cortexcart-insight-dashboard.lovable.app) to create an account.
+2.  **Sign up for a CortexCart account:** Visit [test beta link](https://cortexcart.com/beta) to create an account.
 3.  **Retrieve your unique JavaScript snippet:** You'll find this in your CortexCart dashboard after signing up.
 4.  **Add the snippet to your website:**
     ```html
