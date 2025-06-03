@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -87,7 +88,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-gradient-to-b from-recoai-purple/5 to-recoai-teal/5">
+    <div className="min-h-screen flex flex-col md:flex-row bg-gradient-to-b from-cortexcart-purple/5 to-cortexcart-teal/5">
       {/* Left side - CTA */}
       <div className="w-full md:w-1/2 p-8 flex flex-col justify-center items-center text-center md:text-left">
         <div className="max-w-md mx-auto md:mx-0">
@@ -147,7 +148,7 @@ const Login: React.FC = () => {
                   </label>
                   <Link
                     to="/forgot-password"
-                    className="text-xs text-recoai-purple hover:text-recoai-purple/80"
+                    className="text-xs text-cortexcart-purple hover:text-cortexcart-purple/80"
                   >
                     Forgot password?
                   </Link>
@@ -173,7 +174,7 @@ const Login: React.FC = () => {
 
               <Button
                 type="submit"
-                className="w-full bg-recoai-purple hover:bg-recoai-purple/90"
+                className="w-full bg-cortexcart-purple hover:bg-cortex-purple/90"
                 disabled={isLoading}
               >
                 {isLoading ? "Logging in..." : "Login"}
@@ -183,7 +184,7 @@ const Login: React.FC = () => {
           <CardFooter className="flex flex-col space-y-4 text-center">
             <div className="text-sm text-muted-foreground">
               Don't have an account?{" "}
-              <Link to="/register" className="text-recoai-purple hover:text-recoai-purple/80">
+              <Link to="/register" className="text-cortexcart-purple hover:text-cortexcart-purple/80">
                 Sign up for a 14-day free trial
               </Link>
             </div>

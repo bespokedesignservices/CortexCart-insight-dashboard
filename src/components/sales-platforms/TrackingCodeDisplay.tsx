@@ -131,7 +131,7 @@ const TrackingCodeDisplay = ({ platform, storeId, selectedPlatformId }: Tracking
           className={
             copied
               ? "bg-green-500 text-white hover:bg-green-600 border-green-500"
-              : "border-recoai-purple text-recoai-purple hover:bg-recoai-purple/10"
+              : "border-cortexcart-purple text-cortexcart-purple hover:bg-cortexcart-purple/10"
           }
           onClick={handleCopy}
         >
@@ -153,7 +153,7 @@ const TrackingCodeDisplay = ({ platform, storeId, selectedPlatformId }: Tracking
       
       {platform.settingsUrl && (
         <p className="text-sm mb-3">
-          Access your store settings at: <a href={platform.settingsUrl} target="_blank" rel="noopener noreferrer" className="text-recoai-purple underline">
+          Access your store settings at: <a href={platform.settingsUrl} target="_blank" rel="noopener noreferrer" className="text-cortexcart-purple underline">
             {platform.settingsUrl}
           </a>
         </p>

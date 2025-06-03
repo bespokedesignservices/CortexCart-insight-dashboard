@@ -112,7 +112,7 @@ const Registration: React.FC = () => {
   const selectedPlan = plans.find(plan => plan.id === form.watch("plan")) || plans[1];
 
   return (
-    <div className="min-h-screen bg-recoai-lightGray flex flex-col">
+    <div className="min-h-screen bg-cortexcart-lightGray flex flex-col">
       <header className="w-full py-4 bg-white border-b">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex justify-between items-center">
@@ -129,7 +129,7 @@ const Registration: React.FC = () => {
             <h1 className="text-3xl md:text-4xl font-bold mb-4">
               Start Your <span className="gradient-text">14-Day Free Trial</span>
             </h1>
-            <p className="text-lg text-recoai-gray">
+            <p className="text-lg text-cortexcart-gray">
               No credit card required. Cancel anytime.
             </p>
           </div>
@@ -203,7 +203,7 @@ const Registration: React.FC = () => {
                   
                   <div className="space-y-6">
                     <h2 className="text-xl font-semibold">Choose Your Plan</h2>
-                    <p className="text-sm text-recoai-gray mb-4">
+                    <p className="text-sm text-cortexcart-gray mb-4">
                       All plans include a 14-day free trial. No credit card required.
                     </p>
                     
@@ -223,7 +223,7 @@ const Registration: React.FC = () => {
                                   key={plan.id}
                                   className={`flex items-start p-4 rounded-lg border ${
                                     field.value === plan.id
-                                      ? "border-recoai-purple bg-recoai-purple/5"
+                                      ? "border-cortexcart-purple bg-cortexcart-purple/5"
                                       : "border-gray-200"
                                   }`}
                                 >
@@ -239,15 +239,15 @@ const Registration: React.FC = () => {
                                     >
                                       {plan.title}
                                       {plan.id === "growth" && (
-                                        <span className="ml-2 text-xs bg-recoai-purple text-white px-2 py-0.5 rounded-full">
+                                        <span className="ml-2 text-xs bg-cortexcart-purple text-white px-2 py-0.5 rounded-full">
                                           Popular
                                         </span>
                                       )}
                                     </Label>
-                                    <p className="text-sm text-recoai-gray mb-1">
+                                    <p className="text-sm text-cortexcart-gray mb-1">
                                       ${plan.price}/month after trial
                                     </p>
-                                    <p className="text-xs text-recoai-gray mb-2">
+                                    <p className="text-xs text-cortexcart-gray mb-2">
                                       {plan.description}
                                     </p>
                                   </div>
@@ -278,13 +278,13 @@ const Registration: React.FC = () => {
 
                 <Button
                   type="submit"
-                  className="w-full bg-recoai-purple hover:bg-recoai-purple/90"
+                  className="w-full bg-cortexcart-purple hover:bg-cortexcart-purple/90"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Creating your account..." : "Start Your Free Trial"}
                 </Button>
                 
-                <p className="text-xs text-center text-recoai-gray mt-4">
+                <p className="text-xs text-center text-cortexcart-gray mt-4">
                   By creating an account, you agree to our Terms of Service and Privacy Policy.
                   Your 14-day free trial starts today. No credit card required.
                 </p>
