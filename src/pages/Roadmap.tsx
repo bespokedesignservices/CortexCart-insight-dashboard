@@ -26,22 +26,46 @@ const Roadmap: React.FC = () => {
       status: "development",
     },
     {
-      quarter: "Q3 2024",
+      quarter: "Q3 2025",
       title: "Abandoned Cart Recovery Optimization",
       description: "Smart timing and messaging recommendations for abandoned cart emails, maximizing recovery rates through personalized approaches.",
       status: "development",
     },
     {
-      quarter: "Q2 2024",
+      quarter: "Q2 2025",
       title: "Multi-language Support",
       description: "Full localization of the CortexCart dashboard and recommendation widgets in 10+ languages, making our platform accessible to global e-commerce businesses.",
       status: "beta",
     },
     {
-      quarter: "Q1 2024",
+      quarter: "Q1 2025",
       title: "Enhanced Mobile Analytics",
       description: "Dedicated mobile analytics providing deeper insights into mobile shopping behavior and conversion optimization for smartphone users.",
-      status: "released",
+      status: "beta",
+    },
+        {
+      quarter: "Q2 2025",
+      title: "Social Media Post Designer",
+      description: "Dedicated Social Media Manager, manage posts with images and AI post text generation for major platforms",
+      status: "beta",
+    },
+    {
+      quarter: "Q2 2025",
+      title: "AI based Reccomendations for Products",
+      description: "New AI based reccomendations for products based on sales volumes and page views",
+      status: "beta",
+    },
+    {
+      quarter: "Q2 2025",
+      title: "Customer Behavior Analytics",
+      description: "Gain deep insights into how customers interact with your store. Track browsing patterns, product views, add-to-carts, and purchase history to understand what drives conversions.",
+      status: "beta",
+    },
+    {
+      quarter: "Q2 2025",
+      title: "Smart Search Enhancement",
+      description: "Enhance your store's search functionality with AI that understands customer intent and delivers more relevant results.Natural language processing, Typo-tolerant search, Personalized search results ranking",
+      status: "beta",
     },
   ];
 
