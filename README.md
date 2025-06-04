@@ -18,6 +18,155 @@
 
 ---
 
+## Installation 🛠️
+
+CortexCart can be installed on Linux servers (Ubuntu 22.04 LTS / CentOS 7+) using our automated installer script. Choose one of the installation methods below:
+
+### Method 1: Direct Download Installation (Recommended)
+
+**One-line installation:**
+```bash
+curl -fsSL https://cortexcart.com/beta/downloads/install-cortexcart.sh | sudo bash
+```
+
+**Or download and inspect before running:**
+```bash
+# Download the installer
+wget https://cortexcart.com/beta/downloads/install-cortexcart.sh
+
+# Make it executable
+chmod +x install-cortexcart.sh
+
+# Review the script (optional but recommended)
+cat install-cortexcart.sh
+
+# Run the installer
+sudo ./install-cortexcart.sh
+```
+
+### Method 2: GitHub Installation
+
+**Clone and install from GitHub:**
+```bash
+# Clone the repository
+git clone https://github.com/bespokedesignservices/cortexcart-insight-dashboard.git
+
+# Navigate to the project directory
+cd cortexcart-insight-dashboard
+
+# Make the installer executable
+chmod +x install-cortexcart.sh
+
+# Run the installer
+sudo ./install-cortexcart.sh
+```
+
+### System Requirements
+
+- **Operating System:** Ubuntu 22.04 LTS or CentOS 7+
+- **Memory:** Minimum 2GB RAM (4GB recommended)
+- **Storage:** At least 5GB free space
+- **Network:** Internet connection for downloading dependencies
+- **Privileges:** Root access (sudo) required for installation
+
+### Technology Stack
+
+The installer automatically sets up:
+- **Frontend:** React/TypeScript application built with Vite
+- **Runtime:** Node.js 18.x
+- **Web Server:** Nginx
+- **Backend:** Supabase for backend services
+- **Process Management:** systemd
+
+### Post-Installation Configuration
+
+After installation completes:
+
+1. **Configure Environment Variables:**
+   Edit `/opt/cortexcart/app/.env` with your settings:
+   ```bash
+   sudo nano /opt/cortexcart/app/.env
+   ```
+   
+   Update these required fields:
+   ```env
+   APP_DOMAIN=your-domain.com
+   APP_URL=https://your-domain.com
+   ADMIN_EMAIL=admin@your-domain.com
+   VITE_SUPABASE_URL=your-supabase-url
+   VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+   SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
+   ```
+
+2. **Update Nginx Configuration:**
+   Edit the server name in `/etc/nginx/sites-available/cortexcart`:
+   ```bash
+   sudo nano /etc/nginx/sites-available/cortexcart
+   ```
+   
+   Change `server_name _;` to `server_name your-domain.com;`
+
+3. **Restart Services:**
+   ```bash
+   sudo systemctl restart cortexcart nginx
+   ```
+
+4. **Verify Installation:**
+   ```bash
+   # Check service status
+   sudo systemctl status cortexcart
+   
+   # View application logs
+   sudo journalctl -u cortexcart -f
+   ```
+
+### Service Management
+
+**Common service commands:**
+```bash
+# Check status
+sudo systemctl status cortexcart
+
+# Start service
+sudo systemctl start cortexcart
+
+# Stop service
+sudo systemctl stop cortexcart
+
+# Restart service
+sudo systemctl restart cortexcart
+
+# View logs
+sudo journalctl -u cortexcart -f
+```
+
+### Firewall Configuration
+
+The installer automatically configures firewall rules for:
+- Port 22 (SSH)
+- Port 80 (HTTP)
+- Port 443 (HTTPS)
+
+### SSL/TLS Setup (Recommended)
+
+For production use, set up SSL certificates:
+
+**Using Let's Encrypt (free):**
+```bash
+# Install certbot
+sudo apt update
+sudo apt install certbot python3-certbot-nginx
+
+# Obtain certificate
+sudo certbot --nginx -d your-domain.com
+
+# Auto-renewal (optional)
+sudo crontab -e
+# Add: 0 12 * * * /usr/bin/certbot renew --quiet
+```
+
+---
+
 ## How It Works ⚙️
 
 1.  **Sign Up:** Create your CortexCart account.
@@ -27,6 +176,7 @@
 5.  **Take Action:** Use the insights and recommendations to make informed decisions and improve your website's performance.
 
 ---
+
 ## Screen Shots ##
 ## Onboarding landing page ##
 <img width="1426" alt="Screenshot 2025-06-01 at 06 27 25" src="https://github.com/user-attachments/assets/4be0d33c-a317-4a7e-ad5f-ff9f66fe6ad3" />
@@ -35,31 +185,50 @@
 
 <img width="1441" alt="Screenshot 2025-06-01 at 06 31 07" src="https://github.com/user-attachments/assets/6a0210c3-3ab5-41dc-b303-b880ede9dfa0" />
 
-
-
 ---
+
 ## Getting Started 🏁
 
-1.  **Clone the repository (Optional - if you plan to contribute or view source):**
-    ```bash
-    git clone [https://github.com/bespokedesignservices/cortexcart-insight-dashboard.git](https://github.com/bespokedesignservices/cortexcart-insight-dashboard.git)
-    ```
-2.  **Sign up for a CortexCart account:** Visit [test beta link](https://cortexcart.com/beta) to create an account.
-3.  **Retrieve your unique JavaScript snippet:** You'll find this in your CortexCart dashboard after signing up.
-4.  **Add the snippet to your website:**
+1.  **Install CortexCart:** Use one of the installation methods above to set up your server.
+2.  **Configure Environment:** Update your `.env` file with Supabase credentials and domain settings.
+3.  **Sign up for a CortexCart account:** Visit your installed instance to create an account.
+4.  **Retrieve your unique JavaScript snippet:** You'll find this in your CortexCart dashboard after signing up.
+5.  **Add the snippet to your website:**
     ```html
     <script async src="[Your Unique CortexCart Script URL Here]"></script>
     ```
-5.  **Log in to your CortexCart dashboard** to start seeing insights once data collection begins!
+6.  **Log in to your CortexCart dashboard** to start seeing insights once data collection begins!
 
 ---
 
-## Tech Stack 🛠️
+## Troubleshooting 🔧
 
-* **Frontend (Dashboard):** Typescript, HTML, Bootstrap 4
-* **Backend (API & AI):** Typescript, HTML, Bootstrap 4, Javascript
-* **Database:** MySQL
-* **Tracking Script:** JavaScript
+### Common Issues
+
+**Installation fails:**
+- Ensure you have root/sudo access
+- Check internet connectivity
+- Verify system requirements are met
+
+**Service won't start:**
+```bash
+# Check logs for errors
+sudo journalctl -u cortexcart --no-pager
+
+# Verify configuration
+sudo nginx -t
+```
+
+**Can't access dashboard:**
+- Check firewall settings
+- Verify Nginx is running: `sudo systemctl status nginx`
+- Check domain/DNS configuration
+
+### Log Locations
+
+- **Installation Log:** `/var/log/cortexcart/install_YYYYMMDD-HHMMSS.log`
+- **Application Logs:** `sudo journalctl -u cortexcart`
+- **Nginx Logs:** `/var/log/nginx/access.log` and `/var/log/nginx/error.log`
 
 ---
 
@@ -73,19 +242,23 @@ We welcome contributions to make CortexCart even better! If you'd like to contri
 4.  Push to the Branch (`git push origin feature/AmazingFeature`).
 5.  Open a Pull Request.
 
-Please read `CONTRIBUTING.md` (you'll need to create this file) for details on our code of conduct and the process for submitting pull requests.
+Please read `CONTRIBUTING.md` for details on our code of conduct and the process for submitting pull requests.
 
 ---
 
 ## Support 💬
 
-If you have any questions or encounter any issues, please open an issue on this GitHub repository or contact us at jonathanservice@hotmail.com.
+If you have any questions or encounter any issues, please:
+
+- Open an issue on this GitHub repository
+- Contact us at jonathanservice@hotmail.com
+- Check the troubleshooting section above
 
 ---
 
 ## License 📄
 
-This project is licensed under the MIT - see the `LICENSE.md` file for details.
+This project is licensed under the MIT License - see the `LICENSE.md` file for details.
 
 ---
 
