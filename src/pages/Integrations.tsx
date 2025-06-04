@@ -22,16 +22,18 @@ const Integrations: React.FC = () => {
     },
     {
       id: "bigcommerce",
-      ...platformDetails.bigcommerce
+     name: "bigcommerce",
+      logo: "https://www.intelligentreach.com/wp-content/uploads/2020/09/BigCommerce-logo-svg.png",
+      description: "Track sales data from your BigCommerce store seemlessly with CortexCart"
     },
     {
       id: "prestashop",
       ...platformDetails.prestashop
     },
     {
-      id: "opencast",
+      id: "opencart",
       name: "OpenCart",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/0/0c/OpenCart_logo.png",
+      logo: "https://www.logo.wine/a/logo/OpenCart/OpenCart-Logo.wine.svg",
       description: "Integrate seamlessly with OpenCart stores using our comprehensive module that supports all OpenCart features."
     },
     {
@@ -43,17 +45,17 @@ const Integrations: React.FC = () => {
   const tools = [
     {
       name: "Google Analytics",
-      logo: "https://www.google.com/analytics/static/53c5c7d1/svg/google-analytics-logo.svg",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Logo_Google_Analytics.svg/563px-Logo_Google_Analytics.svg.png",
       description: "Combine CortexCart insights with your Google Analytics data for comprehensive reporting."
     },
     {
       name: "Klaviyo",
-      logo: "https://cdn.worldvectorlogo.com/logos/klaviyo.svg",
+      logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/b0/Klaviyo_primary_logo.svg/583px-Klaviyo_primary_logo.svg.png",
       description: "Use CortexCart customer segments and product recommendations in your Klaviyo email campaigns."
     },
     {
       name: "Mailchimp",
-      logo: "https://cdn.worldvectorlogo.com/logos/mailchimp-freddie.svg",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/MailChimp.svg/960px-MailChimp.svg.png",
       description: "Enhance your Mailchimp emails with personalized product recommendations from CortexCart."
     },
     {
@@ -68,7 +70,7 @@ const Integrations: React.FC = () => {
     },
     {
       name: "Snapchat Ads",
-      logo: "https://cdn.worldvectorlogo.com/logos/snapchat-2.svg",
+      logo: "https://www.logo.wine/a/logo/Snapchat/Snapchat-Logo.wine.svg",
       description: "Use CortexCart customer insights to create more effective Snapchat ad campaigns and reach younger demographics."
     },
     {
