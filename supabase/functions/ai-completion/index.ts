@@ -37,8 +37,8 @@ serve(async (req) => {
 
     // Prepare default system message if no messages provided
     const defaultMessages = [
-      { role: "system", content: "You are an AI assistant for an e-commerce platform called RecoAI. You help users with product recommendations, answer questions about the platform, and provide insights about their store data. Keep responses concise and helpful." },
-      { role: "user", content: prompt || "Hello, can you tell me about RecoAI?" }
+      { role: "system", content: "You are an AI assistant for an e-commerce platform called CortexCart. You help users with product recommendations, answer questions about the platform, and provide insights about their store data. Keep responses concise and helpful." },
+      { role: "user", content: prompt || "Hello, can you tell me about CortexCart?" }
     ];
 
     // Use provided messages or default to the default messages
