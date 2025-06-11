@@ -2,7 +2,7 @@
 # CortexCart 🚀
 
 **Unlock valuable insights into your customer's purchasing and Browse behavior with CortexCart!** This AI-powered dashboard uses a simple JavaScript snippet that can be easily integrated into any website. CortexCart empowers you to take actionable steps to improve sales, enhance usability, and boost product discoverability in real-time.
-
+**Beta v0.9.0 Version** This Beta version is available to contribute to and download and use as is, we do reserve the right to pull this access and make the application private after beta testing and the app is released from Beta to v1.0 Stable. We will announce this here on github and our website cortexcart.com/release.
 ---
 
 ## Features ✨
